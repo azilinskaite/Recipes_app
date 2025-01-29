@@ -18,10 +18,8 @@
   --big-text-size: 3rem;
 
   --base-font: ;
-  
-  --decorative-font: font-family: "DM Serif Display", serif;
-  font-weight: 400;
-  font-style: normal;
+
+  --decorative-font: ;
 }
 
 body {
