@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 * {
   margin: 0;
@@ -17,13 +18,19 @@
   --mid-text-size: 1.5rem;
   --big-text-size: 3rem;
 
-  --base-font: ;
+  --base-font: "Quicksand", serif;
+  /* weight 400 */
 
-  --decorative-font: ;
+  --decorative-font: "DM Serif Display", serif;
 }
 
 body {
   background-color: var(--background-color);
   color: var(--font-color);
   font-family: var(--base-font);
+}
+
+.test {
+  font-family: var(--decorative-font);
+  font-size: var(--big-text-size);
 }
