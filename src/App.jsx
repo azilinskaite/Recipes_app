@@ -1,4 +1,5 @@
 import './App.css';
+import CoctailsList from './Components/API Component/API Component';
 
 function App() {
   return (
@@ -9,6 +10,9 @@ function App() {
         <div className='test'>Recipes</div>
 
       </header>
+      <div>
+      <CoctailsList />
+    </div>
     </div>
   );
 }
