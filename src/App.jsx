@@ -1,6 +1,6 @@
 import './App.css';
-import CocktailsList from './Components/API Component/API Component';
 import SearchHeader from './Components/SearchHeaderComponent/SearchHeaderComponent';
+import CocktailList from './Components/Cocktail-list-component-AR/Cocktail-list.jsx';
 
 function App() {
   return (
@@ -10,10 +10,10 @@ function App() {
 
       <main>
         <SearchHeader/>
+        <CocktailList/>
       </main>
 
       {/* footer */}
-
 
     </div>
   );
