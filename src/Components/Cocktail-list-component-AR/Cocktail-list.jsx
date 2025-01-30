@@ -16,7 +16,7 @@ const CocktailsList = () => {
   return (
     <div className="cocktail-grid"> {}
       {cocktail.map((drink) => (
-        <div key={drink.idDrink}> {}
+        <div key={drink.idDrink} className="productCartContainer"> {}
           <h2>{drink.strDrink}</h2>
           <p>{drink.strCategory}</p>
           <img
