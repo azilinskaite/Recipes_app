@@ -1,18 +1,12 @@
 import './App.css';
-import CoctailsList from './Components/API Component/API Component';
+import CocktailList from './Components/Cocktail-list-component-AR/Cocktail-list.jsx';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Some text
-
-        <div className='test'>Recipes</div>
-
-      </header>
-      <div>
-      <CoctailsList />
-    </div>
+     <main>
+      <CocktailList/>
+      </main>
     </div>
   );
 }

@@ -1,0 +1,10 @@
+@import '../../App.css';
+
+.cocktail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 3rem; 
+    padding: 6rem; 
+    background-color: var(--background-color); 
+    justify-content: center; 
+  }
