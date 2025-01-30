@@ -22,6 +22,15 @@
     width: 100%;
     li {
       font-weight: 500;
+      padding: 0.1rem;
+      border-bottom: 1px solid var(--background-color);
+      transition: 0.2s;
+      &:hover {
+        border-bottom: 1px solid var(--font-color);
+      }
+      &:active {
+        border-bottom: 1px solid var(--font-color);
+      }
     }
   }
 }
@@ -29,18 +38,18 @@
 .search-form {
   display: flex;
   position: relative;
-  padding-left: 1rem;
   width: 60%;
   max-width: 40rem;
   .search-input {
     width: 100%;
     border: 1px solid darkgray;
     border-radius: 2rem;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
     font-family: inherit;
+    font-size: 1rem;
   }
   .search-button {
-    padding: 0.4rem 0.5rem;
+    padding: 0.6rem 0.7rem;
     border: none;
     border-radius: 50%;
     background-color: var(--font-color);
