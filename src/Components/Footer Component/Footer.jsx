@@ -1,0 +1,26 @@
+import React from "react";
+import "./Footer.css"; 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
+
+const Footer = () => {
+  return (
+    <footer className="footer">
+      <div className="footer-left">
+        <p>Contact us:</p>
+        <p>cocktailkungen@kungen.se</p>
+      </div>
+      
+      <div className="footer-right">
+        <p>Follow us:</p>
+        <div className="social-icons">
+          <FontAwesomeIcon icon={faFacebook} />
+          <FontAwesomeIcon icon={faTwitter} />
+          <FontAwesomeIcon icon={faInstagram} />
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
