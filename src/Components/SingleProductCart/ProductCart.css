@@ -1,0 +1,25 @@
+@import "../../App.css";
+
+.prodctCartContainer{
+  width: 16%;
+  border: 2px solid;
+  padding: 10px;
+}
+.prodctCartContainer img{
+  width: 200px;
+  height: 200px;
+  padding: 8px;
+}
+.prodctCartContainer h2{
+  font-size: 1.2rem;
+  font-family: var(--decorative-font);
+}
+.prodctCartContainer p{
+  font-family: var(--base-font);
+  font-size: 1rem;
+  line-height: 1.5rem;
+
+}
+
+
+
