@@ -7,8 +7,8 @@ const CocktailsList = () => {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); 
-        setCocktail(data.drinks); 
+        console.log(data);
+        setCocktail(data.drinks);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -24,7 +24,7 @@ const CocktailsList = () => {
             <img
               src={drink.strDrinkThumb}
               alt={drink.strName}
-              style={{ width: "200px", height: "200px" }} 
+              style={{ width: "200px", height: "200px" }}
             />
           </li>
         ))}
