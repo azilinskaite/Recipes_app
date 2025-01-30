@@ -1,18 +1,20 @@
 import './App.css';
-import CoctailsList from './Components/API Component/API Component';
+import CocktailsList from './Components/API Component/API Component';
+import SearchHeader from './Components/SearchHeaderComponent/SearchHeaderComponent';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Some text
 
-        <div className='test'>Recipes</div>
+      {/* header */}
 
-      </header>
-      <div>
-      <CoctailsList />
-    </div>
+      <main>
+        <SearchHeader/>
+      </main>
+
+      {/* footer */}
+
+
     </div>
   );
 }

@@ -29,8 +29,3 @@ body {
   color: var(--font-color);
   font-family: var(--base-font);
 }
-
-.test {
-  font-family: var(--decorative-font);
-  font-size: var(--big-text-size);
-}
