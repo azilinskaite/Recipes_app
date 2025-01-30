@@ -6,6 +6,7 @@
   align-items: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  padding: 0 3rem;
   h1 {
     font-family: var(--decorative-font);
     font-size: var(--big-text-size);
@@ -14,13 +15,16 @@
   }
   nav ul {
     list-style-type: none;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    /* display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: center; */
     gap: 1rem;
     margin-bottom: 1rem;
     width: 100%;
     li {
+        text-align: center;
       font-weight: 500;
       padding: 0.1rem;
       border-bottom: 1px solid var(--background-color);
@@ -38,7 +42,7 @@
 .search-form {
   display: flex;
   position: relative;
-  width: 60%;
+  width: 80%;
   max-width: 40rem;
   .search-input {
     width: 100%;
@@ -62,3 +66,10 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+    .search-header nav ul {
+      grid-template-columns: 1fr;
+      margin-bottom: 2rem;
+    }
+  }
