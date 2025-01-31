@@ -8,3 +8,47 @@
     background-color: var(--background-color); 
     justify-content: center; 
 }
+.productCartContainer{
+    border: 2px solid;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.productCartContainer img{
+    margin-bottom: 0.8rem;
+  }
+  
+.productCartContainer h2{
+    font-size: 1.2rem;
+    font-family: var(--decorative-font);
+    
+    
+  }
+  
+.productCartContainer p{
+    font-family: var(--base-font);
+    font-size: 1rem;
+   
+  }
+.textContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+        
+}
+.infoDiv{
+    display: flex;
+    
+}
+.iconDiv{
+    float: right;
+}
+    
+    
+
+
+
