@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header Component/Header";
-// import SearchHeader from "./Components/SearchHeaderComponent/SearchHeaderComponent";
 import CocktailsList from "./Components/Cocktail-list-component-AR/Cocktail-list.jsx";
 import Footer from "./Components/Footer Component/Footer.jsx"
 import { FavouritesProvider } from "./Components/FavouritesContext/FavouritesContext.jsx"
@@ -25,13 +24,10 @@ function App() {
         </Router>
       </header>
 
-{/* SEPARATE: SearchHeader+Cocktail List & FavouritesHeader+FavouritesList */}
       <main>
-        {/* <SearchHeader /> */}
-        {/* <CocktailsList /> */}
       </main>
 
-      <Footer/>
+      <Footer />
     </div>
     </FavouritesProvider>
   );
