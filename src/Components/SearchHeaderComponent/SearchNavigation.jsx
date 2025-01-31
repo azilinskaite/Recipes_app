@@ -1,21 +1,17 @@
 import React from "react";
 import './SearchHeaderComponent.css';
 
-const SearchNavigation = () => {
-  return (
-      <nav className="search-navigation">
-        <ul>
-        {/* ADD TO EVERY COMPONENT <NavLink to="state-component"
-              className={({ isActive }) =>
-                isActive ? "active-link" : "inactive-link"
-              }>State Component </NavLink> */}
-          <li>Search by name</li>
-          <li>Search by ingredient</li>
-          <li>Search by first letter</li>
-          <li>Get a random drink</li>
-        </ul>
-      </nav>
-  );
+const SearchNavigation = ({ onNavClick }) => {
+    return (
+        <nav className="search-navigation">
+          <ul>
+            <li onClick={() => onNavClick('byName')}>Search by name</li>
+            <li onClick={() => onNavClick('byIngredient')}>Search by ingredient</li>
+            <li onClick={() => onNavClick('byFirstLetter')}>Search by first letter</li>
+            <li onClick={() => onNavClick('byRandom')}>Get a random drink</li>
+          </ul>
+        </nav>
+      );
 };
 
 export default SearchNavigation;
