@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header Component/Header";
 import SearchHeader from "./Components/SearchHeaderComponent/SearchHeaderComponent";
 import CocktailList from "./Components/Cocktail-list-component-AR/Cocktail-list.jsx";
-import { ProductCart } from "./Components/SingleProductCart/ProductCart";
-import Footer from "./Components/Footer Component/Footer.jsx"
+import Footer from "./Components/Footer Component/Footer.jsx";
 
 const Homepage = () => <h2>Welcome to Homepage</h2>;
 const Favorites = () => <h2>My Favourites</h2>;
@@ -27,10 +26,9 @@ function App() {
       <main>
         <SearchHeader />
         <CocktailList />
-        <ProductCart />
       </main>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }
