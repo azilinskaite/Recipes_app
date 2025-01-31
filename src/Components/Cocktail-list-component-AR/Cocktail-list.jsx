@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./Cocktail-list.css";
+
+import './Cocktail-list.css'; 
+import SearchHeader from '../SearchHeaderComponent/SearchHeaderComponent.jsx';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
@@ -16,6 +18,8 @@ const CocktailsList = () => {
   }, []);
 
   return (
+    <section>
+      <SearchHeader/>
     <div className="cocktail-grid">
       {" "}
       {}
@@ -43,6 +47,7 @@ const CocktailsList = () => {
         </div>
       ))}
     </div>
+    </section>
   );
 };
 
