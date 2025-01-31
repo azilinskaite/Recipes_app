@@ -17,13 +17,13 @@ const CocktailsList = () => {
     <div className="cocktail-grid"> {}
       {cocktail.map((drink) => (
         <div key={drink.idDrink} className="productCartContainer"> {}
-          <h2>{drink.strDrink}</h2>
-          <p>{drink.strCategory}</p>
-          <img
+        <img
             src={drink.strDrinkThumb}
             alt={drink.strDrink}
             style={{ width: "100%", height: "auto" }}
           />
+          <h2>{drink.strDrink}</h2>
+          <p>{drink.strCategory}</p>
         </div>
       ))}
     </div>

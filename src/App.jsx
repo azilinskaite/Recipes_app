@@ -4,6 +4,7 @@ import Header from "./Components/Header Component/Header";
 import SearchHeader from "./Components/SearchHeaderComponent/SearchHeaderComponent";
 import CocktailList from "./Components/Cocktail-list-component-AR/Cocktail-list.jsx";
 import { ProductCart } from "./Components/SingleProductCart/ProductCart";
+import Footer from "./Components/Footer Component/Footer.jsx"
 
 const Homepage = () => <h2>Welcome to Homepage</h2>;
 const Favorites = () => <h2>My Favourites</h2>;
@@ -29,7 +30,7 @@ function App() {
         <ProductCart />
       </main>
 
-      {/* <footer></footer> */}
+      <Footer/>
     </div>
   );
 }
