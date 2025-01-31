@@ -1,15 +1,13 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header Component/Header";
-import SearchHeader from "./Components/SearchHeaderComponent/SearchHeaderComponent";
-import CocktailList from "./Components/Cocktail-list-component-AR/Cocktail-list.jsx";
-import { ProductCart } from "./Components/SingleProductCart/ProductCart";
+// import SearchHeader from "./Components/SearchHeaderComponent/SearchHeaderComponent";
+import CocktailsList from "./Components/Cocktail-list-component-AR/Cocktail-list.jsx";
 import Footer from "./Components/Footer Component/Footer.jsx"
 import { FavouritesProvider } from "./Components/FavouritesContext/FavouritesContext.jsx"
 import FavouritesList from "./Components/FavouritesListComponent/FavouritesListComponent.jsx";
 
 const Homepage = () => <h2>Welcome to Homepage</h2>;
-// const Favourites = () => <h2>My Favourites</h2>;
 const SignOut = () => <h2>Signing Out...</h2>;
 
 function App() {
@@ -20,17 +18,17 @@ function App() {
         <Router>
           <Header />
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<CocktailsList />} />
             <Route path="/favorites" element={<FavouritesList />} />
             <Route path="/signout" element={<SignOut />} />
           </Routes>
         </Router>
       </header>
 
+{/* SEPARATE: SearchHeader+Cocktail List & FavouritesHeader+FavouritesList */}
       <main>
-        <SearchHeader />
-        <CocktailList />
-        <ProductCart />
+        {/* <SearchHeader /> */}
+        {/* <CocktailsList /> */}
       </main>
 
       <Footer/>

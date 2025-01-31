@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Cocktail-list.css'; 
+import SearchHeader from '../SearchHeaderComponent/SearchHeaderComponent.jsx';
 
 const CocktailsList = () => {
   const [cocktail, setCocktail] = useState([]);
@@ -14,6 +15,8 @@ const CocktailsList = () => {
   }, []);
 
   return (
+    <section>
+      <SearchHeader/>
     <div className="cocktail-grid"> {}
       {cocktail.map((drink) => (
         <div key={drink.idDrink} className="productCartContainer"> {}
@@ -27,6 +30,7 @@ const CocktailsList = () => {
         </div>
       ))}
     </div>
+    </section>
   );
 };
 
