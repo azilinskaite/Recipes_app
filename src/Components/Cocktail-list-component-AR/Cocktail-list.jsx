@@ -28,20 +28,18 @@ const CocktailsList = () => {
             alt={drink.strDrink}
             style={{ width: "100%", height: "auto" }}
           />
-          <div className="infoDiv">
-            <div className="textContainer">
-              <h2>{drink.strDrink}</h2>
-              <p>{drink.strCategory}</p>
-            </div>
-            <div className="iconDiv">
+          <div className="iconContainer">
+            <h2>{drink.strDrink}</h2>
+            <button className="iconDiv">
               <FontAwesomeIcon
                 icon={faHeart}
                 size="2x"
                 color="red"
                 className="heart"
               />
-            </div>
+            </button>
           </div>
+          <p>{drink.strCategory}</p>
         </div>
       ))}
     </div>
