@@ -7,8 +7,14 @@ import "./App.css";
 import SearchHeader from "./Components/SearchHeaderComponent/SearchHeaderComponent";
 import CocktailList from "./Components/Cocktail-list-component-AR/Cocktail-list.jsx";
 import { ProductCart } from "./Components/SingleProductCart/ProductCart";
+// import SearchByName from "./Components/CocktailSearch Component/SearchByName.jsx";
 
-const Homepage = () => <h2>Welcome to Homepage</h2>;
+
+const Homepage = () => (
+  <div>
+    <SearchHeader /> {/* Include SearchHeader component */}
+  </div>
+);
 const Favorites = () => <h2>My Favourites</h2>;
 const SignOut = () => <h2>Signing Out...</h2>;
 
@@ -25,7 +31,8 @@ function App() {
       </Router>
 
       <main>
-        <SearchHeader />
+        {/* <SearchHeader /> */}
+        {/* <SearchByName /> */}
         <CocktailList />
         <ProductCart />
       </main>
