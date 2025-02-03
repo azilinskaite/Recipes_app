@@ -65,7 +65,6 @@ const CocktailsList = ({ items = [] }) => {
         )}
       </div> */}
 
-      {/* <SearchHeader/> */}
       <div className="cocktail-grid">
         {" "}
         {}
