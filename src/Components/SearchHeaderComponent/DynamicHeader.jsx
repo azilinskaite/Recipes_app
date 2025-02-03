@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import SearchBar from "./SearchBar";
-import "./SearchHeaderComponent.css";
 import SearchNavigation from "./SearchNavigation";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import CocktailsList from "../Cocktail-list-component-AR/Cocktail-list";
-//import './Cocktail-list-component-AR/Cocktail-list.css';
+import "./DynamicHeader.css";
 
-const SearchHeader = () => {
+const DynamicHeader = ({ type }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [items, setItems] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -24,7 +21,12 @@ const SearchHeader = () => {
     };
     fetchInitialItems();
   }, []);
-  console.log(items);
+
+  useEffect(() => {
+    if (searchTerm) {
+      handleSearch(searchTerm);
+    }
+  }, [searchTerm]);
 
   const handleSearch = async (term) => {
     const response = await fetch(
@@ -58,12 +60,6 @@ const SearchHeader = () => {
     setSearchResults(data.drinks || []);
   };
 
-  useEffect(() => {
-    if (searchTerm) {
-      handleSearch(searchTerm);
-    }
-  }, [searchTerm]);
-
   const handleSearchByNameClick = () => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
@@ -74,7 +70,6 @@ const SearchHeader = () => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
-    // handleSearchByIngredient("Gin");
   };
 
   const handleSearchByFirstLetterClick = () => {
@@ -87,23 +82,26 @@ const SearchHeader = () => {
 
   return (
     <section className="search-header">
-      <h1>Cocktail recipes</h1>
-      <SearchNavigation
-        onSearchByNameClick={handleSearchByNameClick}
-        onSearchByIngredientClick={handleSearchByIngredientClick}
-        onSearchByFirstLetter={handleSearchByFirstLetterClick}
-        onRandomDrink={handleRandomDrinkClick}
-      />
-      <SearchBar onSearch={setSearchTerm} inputRef={searchInputRef} />
-      {/* <CocktailsList items={searchResults.length > 0 ? searchResults : items} />  */}
-      {/* <CocktailsList items={searchResults} /> */}
-      {searchResults.length > 0 ? (
-        <CocktailsList items={searchResults} />
-      ) : (
-        <CocktailsList items={items} />
+      <h1>{type === "favorites" ? "Favourite recipes" : "Cocktail recipes"}</h1>
+      {type !== "favorites" && (
+        <>
+          <SearchNavigation
+            onSearchByNameClick={handleSearchByNameClick}
+            onSearchByIngredientClick={handleSearchByIngredientClick}
+            onSearchByFirstLetter={handleSearchByFirstLetterClick}
+            onRandomDrink={handleRandomDrinkClick}
+          />
+          <SearchBar onSearch={setSearchTerm} inputRef={searchInputRef} />
+          {searchResults.length > 0 ? (
+            <CocktailsList items={searchResults} />
+          ) : (
+            <CocktailsList items={items} />
+          )}
+        </>
       )}
     </section>
   );
 };
 
-export default SearchHeader;
+export default DynamicHeader;
+

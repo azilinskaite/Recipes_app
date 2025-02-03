@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 0.8rem 1.8rem;
 }
 
 .logo {
@@ -13,16 +13,15 @@
 }
 
 .logo img {
-  width: 100px;
+  width: 8rem;
   height: auto;
-  margin-right: 10px;
+  margin-right: 0.8rem;
 }
-
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 30px;
+  gap: 1rem;
 }
 
 nav ul li {
@@ -32,8 +31,13 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   color: var(--font-color);
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--font-color);
+  border-radius: 1rem;
 }
 
 nav ul li a:hover {
-  text-decoration: underline;
+  color: var(--background-color);
+  background-color: var(--font-color);
+  
 }

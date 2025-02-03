@@ -16,27 +16,24 @@
   nav ul {
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center; */
-    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
     margin-bottom: 1rem;
     width: 100%;
     li {
-        text-align: center;
+      text-align: center;
       font-weight: 500;
-      padding: 0.1rem;
-      border-bottom: 1px solid var(--background-color);
+      margin-bottom: 0.2rem;
       transition: 0.2s;
       &:hover {
-        border-bottom: 1px solid var(--font-color);
-      }
-      &:active {
-        border-bottom: 1px solid var(--font-color);
+        text-decoration: underline;
       }
     }
   }
+}
+
+.active-link {
+  text-decoration: underline;
 }
 
 .search-form {
@@ -67,11 +64,9 @@
   }
 }
 
-
-
 @media (max-width: 768px) {
-    .search-header nav ul {
-      grid-template-columns: 1fr;
-      margin-bottom: 2rem;
-    }
+  .search-header nav ul {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
   }
+}
