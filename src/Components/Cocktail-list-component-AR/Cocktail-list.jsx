@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import SearchHeader from "../SearchHeaderComponent/SearchHeaderComponent.jsx";
 import { useFavourites } from "../FavouritesContext/FavouritesContext.jsx";
-import { useFavourites } from '../FavouritesContext/FavouritesContext.jsx'
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 import { Recipe } from "../Recipes/Recipe.jsx";
 
-
 const CocktailsList = ({ items = [] }) => {
   //const [cocktail, setCocktail] = useState([]);
   //const validItems = Array.isArray(items) ? items : [];
   //const validItems = Array.isArray(items) && items.length > 0 ? items : cocktail;
+  const [showComponent, setshowComponent] = useState(false);
   const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
   const toggleFavourite = (drink) => {
@@ -24,13 +21,10 @@ const CocktailsList = ({ items = [] }) => {
     }
   };
 
- const toggleFavourite = (drink) => {
-  const isFavourite = favourites.some(fav => fav.idDrink === drink.idDrink);
-  const [showComponent, setshowComponent] = useState(false);
   return (
     <section>
-      <SearchHeader />
-      <div className="cocktail-grid">
+
+      {/* <div className="cocktail-grid">
         {" "}
         {}
         {cocktail.map((drink) =>
@@ -69,8 +63,7 @@ const CocktailsList = ({ items = [] }) => {
             <Recipe />
           )
         )}
-      </div>
-
+      </div> */}
 
       {/* <SearchHeader/> */}
       <div className="cocktail-grid">
@@ -102,7 +95,7 @@ const CocktailsList = ({ items = [] }) => {
                 />
               </button>
             </div>
-            <p>{drink.strIngredient}</p>
+            <p>{drink.strCategory}</p>
           </div>
         ))}
       </div>
