@@ -5,18 +5,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
-const CocktailsList = () => {
-  const [cocktail, setCocktail] = useState([]);
+const CocktailsList = ({ items }) => {
+  // const [cocktail, setCocktail] = useState([]);
+  const validItems = Array.isArray(items) ? items : [];
   const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
-  useEffect(() => {
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a")
-      .then((response) => response.json())
-      .then((data) => {
-        setCocktail(data.drinks);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setCocktail(data.drinks);
+  //     })
+  //     .catch((error) => console.error("Error fetching data:", error));
+  // }, []);
 
   const toggleFavourite = (drink) => {
     const isFavourite = favourites.some(fav => fav.idDrink === drink.idDrink);
@@ -33,7 +34,7 @@ const CocktailsList = () => {
     <div className="cocktail-grid">
       {" "}
       {}
-      {cocktail.map((drink) => (
+      {validItems.map((drink) => (
         <div key={drink.idDrink} className="productCartContainer">
           <img
             src={drink.strDrinkThumb}
