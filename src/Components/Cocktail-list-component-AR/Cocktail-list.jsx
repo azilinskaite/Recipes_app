@@ -24,10 +24,9 @@ const CocktailsList = ({ items = [] }) => {
   return (
     <section>
 
+    {/* Fix to show recipes on idividual cards */}
       {/* <div className="cocktail-grid">
-        {" "}
-        {}
-        {cocktail.map((drink) =>
+        {items.map((drink) =>
           !showComponent ? (
             <div
               key={drink.idDrink}
@@ -57,7 +56,7 @@ const CocktailsList = ({ items = [] }) => {
                   />
                 </button>
               </div>
-              <p>{drink.strIngredient}</p>
+              <p>{drink.strCategory}</p>
             </div>
           ) : (
             <Recipe />
@@ -66,8 +65,6 @@ const CocktailsList = ({ items = [] }) => {
       </div> */}
 
       <div className="cocktail-grid">
-        {" "}
-        {}
         {items.map((drink) => (
           <div key={drink.idDrink} className="productCartContainer">
             <img
@@ -87,7 +84,6 @@ const CocktailsList = ({ items = [] }) => {
                       ? faHeartSolid
                       : faHeartRegular
                   }
-
                   size="2x"
                   color="red"
                   className="heart"
