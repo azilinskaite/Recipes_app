@@ -1,19 +1,61 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SearchBar from "./SearchBar";
-import './SearchHeaderComponent.css';
+import "./SearchHeaderComponent.css";
 import SearchNavigation from "./SearchNavigation";
-// import CocktailsList from "../Cocktail-list-component-AR/Cocktail-list";
-//import './Cocktail-list-component-AR/Cocktail-list.css'; 
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import CocktailsList from "../Cocktail-list-component-AR/Cocktail-list";
+//import './Cocktail-list-component-AR/Cocktail-list.css';
 
 const SearchHeader = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [items, setItems] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const searchInputRef = useRef(null);
 
+  useEffect(() => {
+    // Fetch initial items when the component mounts
+    const fetchInitialItems = async () => {
+      const response = await fetch(
+        "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
+      );
+      const data = await response.json();
+      setItems(data.drinks || []);
+    };
+    fetchInitialItems();
+  }, []);
+  console.log(items);
+
   const handleSearch = async (term) => {
-    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${term}`);
+    const response = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${term}`
+    );
     const data = await response.json();
-    setItems(data.drinks || []);
+    setSearchResults(data.drinks || []);
+  };
+
+  const handleSearchByIngredient = async (ingredient) => {
+    const response = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
+    );
+    const data = await response.json();
+    setSearchResults(data.drinks || []);
+  };
+
+  const handleSearchByFirstLetter = async (letter) => {
+    const response = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
+    );
+    const data = await response.json();
+    setSearchResults(data.drinks || []);
+  };
+
+  const handleRandomDrink = async () => {
+    const response = await fetch(
+      "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+    );
+    const data = await response.json();
+    setSearchResults(data.drinks || []);
   };
 
   useEffect(() => {
@@ -27,45 +69,40 @@ const SearchHeader = () => {
       searchInputRef.current.focus();
     }
   };
+
+  const handleSearchByIngredientClick = () => {
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+    // handleSearchByIngredient("Gin");
+  };
+
+  const handleSearchByFirstLetterClick = () => {
+    handleSearchByFirstLetter("a");
+  };
+
+  const handleRandomDrinkClick = () => {
+    handleRandomDrink();
+  };
+
   return (
-    <>
     <section className="search-header">
       <h1>Cocktail recipes</h1>
-      <SearchNavigation onSearchByNameClick={handleSearchByNameClick}/>
-      <SearchBar onSearch={setSearchTerm} inputRef={searchInputRef}/>
-      {/* <ul>
-        {items.map(item => (
-          <li key={item.idDrink}>{item.strDrink}</li>
-        ))}
-      </ul> */}
-      {/* <div className="cocktail-list">
-        {items.length > 0 ? (
-          items.map((drink) => (
-            <div key={drink.idDrink} className="cocktail-card">
-              <h2>{drink.strDrink}</h2>
-              <img src={drink.strDrinkThumb} alt={drink.strDrink} width="150" />
-              <p>{drink.strCategory}</p>
-            </div>
-          ))
-        ) : (
-          <p>No cocktails found. Try another name.</p>
-        )}
-      </div> */}
-</section>
-<div className="cocktail-list"> {}
-      {items.map((drink) => (
-        <div key={drink.idDrink} className="productCartContainer"> {}
-          <h2>{drink.strDrink}</h2>
-          <p>{drink.strCategory}</p>
-          <img
-            src={drink.strDrinkThumb}
-            alt={drink.strDrink}
-            style={{ width: "100%", height: "auto" }}
-          />
-        </div>
-      ))}
-    </div>
-    </>
+      <SearchNavigation
+        onSearchByNameClick={handleSearchByNameClick}
+        onSearchByIngredientClick={handleSearchByIngredientClick}
+        onSearchByFirstLetter={handleSearchByFirstLetterClick}
+        onRandomDrink={handleRandomDrinkClick}
+      />
+      <SearchBar onSearch={setSearchTerm} inputRef={searchInputRef} />
+      {/* <CocktailsList items={searchResults.length > 0 ? searchResults : items} />  */}
+      {/* <CocktailsList items={searchResults} /> */}
+      {searchResults.length > 0 ? (
+        <CocktailsList items={searchResults} />
+      ) : (
+        <CocktailsList items={items} />
+      )}
+    </section>
   );
 };
 
