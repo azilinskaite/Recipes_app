@@ -12,7 +12,7 @@ export const FavouritesProvider = ({ children }) =>
 
     const removeFromFavourites = (itemId) => {
         setFavourites((prevFavourites) =>
-        prevFavourites.filter(item => item.id !== itemId));
+        prevFavourites.filter(item => item.idDrink !== itemId));
     };
 
     return (
