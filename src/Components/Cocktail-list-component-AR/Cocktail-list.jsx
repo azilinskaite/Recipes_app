@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
-const CocktailsList = ({ items }) => {
-  // const [cocktail, setCocktail] = useState([]);
-  const validItems = Array.isArray(items) ? items : [];
+const CocktailsList = ({ items = []}) => {
+  //const [cocktail, setCocktail] = useState([]);
+  //const validItems = Array.isArray(items) ? items : [];
+  //const validItems = Array.isArray(items) && items.length > 0 ? items : cocktail;
   const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
   // useEffect(() => {
@@ -17,6 +18,16 @@ const CocktailsList = ({ items }) => {
   //       setCocktail(data.drinks);
   //     })
   //     .catch((error) => console.error("Error fetching data:", error));
+  // }, []);
+
+  // useEffect(() => {
+  //   // Fetch default cocktail list when the component mounts
+  //   const fetchDefaultCocktails = async () => {
+  //     const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a");
+  //     const data = await response.json();
+  //     setCocktail(data.drinks || []);
+  //   };
+  //   fetchDefaultCocktails();
   // }, []);
 
   const toggleFavourite = (drink) => {
@@ -30,11 +41,12 @@ const CocktailsList = ({ items }) => {
 
   return (
     <section>
-      <SearchHeader/>
+      {/* <SearchHeader/> */}
     <div className="cocktail-grid">
       {" "}
       {}
-      {validItems.map((drink) => (
+      {
+      items.map((drink) => (
         <div key={drink.idDrink} className="productCartContainer">
           <img
             src={drink.strDrinkThumb}
@@ -54,7 +66,9 @@ const CocktailsList = ({ items }) => {
           </div>
           <p>{drink.strIngredient}</p>
         </div>
-      ))}
+      ))
+      }
+     
     </div>
     </section>
   );

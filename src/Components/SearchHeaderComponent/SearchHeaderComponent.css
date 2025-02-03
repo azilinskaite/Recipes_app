@@ -67,14 +67,7 @@
   }
 }
 
-.cocktail-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); 
-  gap: 3rem; 
-  padding: 6rem; 
-  background-color: var(--background-color); 
-  justify-content: center; 
-}
+
 
 @media (max-width: 768px) {
     .search-header nav ul {
