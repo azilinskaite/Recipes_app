@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import Loader from "../LoaderComponent/Loader";
 import "./SearchByName.css";
 
 const SearchByName = () => {
   const [searchQuery, setSearchQuery] = useState(""); // Store user input
   const [cocktailList, setCocktailList] = useState([]); // Store API results
-
+  const [loading, setLoading] = useState(false); // Track loading state
+  const [showLoaderForFiveSeconds, setShowLoaderForFiveSeconds] = useState(false);
+  
   const handleSearch = async () => {
     if (!searchQuery) return; // Prevent empty searches
-
+    
     const apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchQuery}`;
-
+    
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
@@ -17,6 +20,12 @@ const SearchByName = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+
+    // Hide loader after 5 seconds, even if the fetch is faster
+    setTimeout(() => {
+      setLoading(false);
+      setShowLoaderForFiveSeconds(false);
+    }, 5000); // Ensure loader stays for at least 5 seconds
   };
 
   return (
@@ -36,6 +45,9 @@ const SearchByName = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       <button onClick={handleSearch}>🔍</button>
+
+      {/* Show loader while fetching data */}
+      {loading && showLoaderForFiveSeconds && <Loader />} {/* Loader appears for 5 seconds */}
 
       {/* Display Results */}
       <div className="cocktail-list">

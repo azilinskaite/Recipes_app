@@ -70,8 +70,8 @@
 
 
 @media (max-width: 768px) {
-    .search-header nav ul {
-      grid-template-columns: 1fr;
-      margin-bottom: 2rem;
-    }
+  .search-header nav ul {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
   }
+}

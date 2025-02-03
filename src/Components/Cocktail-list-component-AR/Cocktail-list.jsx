@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useFavourites } from '../FavouritesContext/FavouritesContext.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
@@ -13,15 +13,6 @@ const CocktailsList = ({ items = [] }) => {
 
   const toggleFavourite = (drink) => {
     const isFavourite = favourites.some((fav) => fav.idDrink === drink.idDrink);
-    if (isFavourite) {
-      removeFromFavourites(drink.idDrink);
-    } else {
-      addToFavourites(drink);
-    }
-  };
-
- const toggleFavourite = (drink) => {
-    const isFavourite = favourites.some(fav => fav.idDrink === drink.idDrink);
     if (isFavourite) {
       removeFromFavourites(drink.idDrink);
     } else {
