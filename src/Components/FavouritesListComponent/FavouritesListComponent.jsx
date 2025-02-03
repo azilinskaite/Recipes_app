@@ -2,7 +2,7 @@ import React from 'react';
 import '../Cocktail-list-component-AR/Cocktail-list.css';
 import FavouriteItemComponent from "../FavouriteItemComponent/FavouriteItemComponent.jsx";
 import FavouritesHeader from '../SearchHeaderComponent/FavouritesHeaderComponent.jsx';
-import { useFavourites } from '../FavouritesContext/FavouritesContext.jsx';
+import { useFavourites } from '../FavouritesContext/FavouritesContext';
 
 const FavouritesList = () => {
     const { favourites } = useFavourites();
