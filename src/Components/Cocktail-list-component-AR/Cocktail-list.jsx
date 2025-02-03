@@ -13,18 +13,14 @@ const CocktailsList = ({ items = [] }) => {
   const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
   const toggleFavourite = (drink) => {
-    const isFavourite = favourites.some((fav) => fav.idDrink === drink.idDrink)
-    if (isFavourite) {
-      removeFromFavourites(drink.idDrink);
-    } else {
-      addToFavourites(drink);
-    }
+    favourites.some((fav) => fav.idDrink === drink.idDrink)
+      ? removeFromFavourites(drink.idDrink)
+      : addToFavourites(drink);
   };
 
   return (
     <section>
-
-    {/* Fix to show recipes on idividual cards */}
+      {/* Fix to show recipes on idividual cards */}
       {/* <div className="cocktail-grid">
         {items.map((drink) =>
           !showComponent ? (
@@ -94,7 +90,6 @@ const CocktailsList = ({ items = [] }) => {
           </div>
         ))}
       </div>
-
     </section>
   );
 };
