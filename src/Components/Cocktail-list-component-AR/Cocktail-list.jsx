@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import SearchHeader from "../SearchHeaderComponent/SearchHeaderComponent.jsx";
-import { useFavourites } from "../FavouritesContext/FavouritesContext.jsx";
+import { useFavourites } from '../FavouritesContext/FavouritesContext.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
+
 
 const CocktailsList = ({ items = [] }) => {
   //const [cocktail, setCocktail] = useState([]);
@@ -20,8 +20,18 @@ const CocktailsList = ({ items = [] }) => {
     }
   };
 
+ const toggleFavourite = (drink) => {
+    const isFavourite = favourites.some(fav => fav.idDrink === drink.idDrink);
+    if (isFavourite) {
+      removeFromFavourites(drink.idDrink);
+    } else {
+      addToFavourites(drink);
+    }
+  };
+
   return (
     <section>
+
       {/* <SearchHeader/> */}
       <div className="cocktail-grid">
         {" "}
@@ -45,6 +55,7 @@ const CocktailsList = ({ items = [] }) => {
                       ? faHeartSolid
                       : faHeartRegular
                   }
+
                   size="2x"
                   color="red"
                   className="heart"
@@ -55,6 +66,7 @@ const CocktailsList = ({ items = [] }) => {
           </div>
         ))}
       </div>
+
     </section>
   );
 };

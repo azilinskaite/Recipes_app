@@ -1,10 +1,47 @@
-@import '../../App.css';
+@import "../../App.css";
 
 .cocktail-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); 
-    gap: 3rem; 
-    padding: 6rem; 
-    background-color: var(--background-color); 
-    justify-content: center; 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 4.5rem;
+  padding: 3.5rem 11rem 6rem 11rem;
+  background-color: var(--background-color);
+  justify-content: center;
+}
+.productCartContainer {
+  border: 2px solid;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.productCartContainer img {
+  margin-bottom: 0.8rem;
+}
+
+.productCartContainer h2 {
+  font-size: 1.2rem;
+  font-family: var(--decorative-font);
+  flex: 1;
+  text-align: center;
+  position: absolute;
+}
+
+.productCartContainer p {
+  font-family: var(--base-font);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.iconDiv {
+  margin-left: auto;
+  border: none;
+  background-color: transparent;
 }
