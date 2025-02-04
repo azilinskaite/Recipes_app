@@ -26,3 +26,12 @@
   width: 1.5rem;
   height: 1.5rem;
 }
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    padding: 3rem 1rem 1rem;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}
