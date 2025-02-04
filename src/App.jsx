@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header Component/Header";
 import DynamicHeader from './Components/SearchHeaderComponent/DynamicHeader';
 import CocktailsList from "./Components/Cocktail-list-component-AR/Cocktail-list.jsx";
-import Footer from "./Components/Footer Component/Footer.jsx"
-import { FavouritesProvider } from "./Components/FavouritesContext/FavouritesContext.jsx"
+import Footer from "./Components/Footer Component/Footer.jsx";
+import { FavouritesProvider } from "./Components/FavouritesContext/FavouritesContext.jsx";
 import FavouritesList from "./Components/FavouritesListComponent/FavouritesListComponent.jsx";
+import { CocktailDetails } from "./Components/Recipes/Recipe.jsx";
 // import SearchByName from "./Components/CocktailSearch Component/SearchByName.jsx";
 
 // const Homepage = () => (
@@ -35,7 +36,12 @@ function App() {
               </>
             } />
             <Route path="/signout" element={<SignOut />} />
-          </Routes>
+              </Routes>
+               <Routes>
+              <Route path="/" element={<CocktailsList />} />
+              <Route path="/cocktail/:id" element={<CocktailDetails />} />
+            </Routes>
+          
           <Footer />
         </div>
       </Router>
