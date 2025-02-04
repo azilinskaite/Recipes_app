@@ -25,10 +25,9 @@ const DynamicHeader = ({ type, onSearch }) => {
       const data = await response.json();
       setItems(data.drinks || []);
 
-      // Wait for 5 seconds and then hide the loader
       setTimeout(() => {
         setLoading(false);
-      }, 5000);
+      }, 3000);
     };
 
     fetchInitialItems();
@@ -49,10 +48,9 @@ const DynamicHeader = ({ type, onSearch }) => {
     const data = await response.json();
     setSearchResults(data.drinks || []);
 
-    // Wait for 5 seconds and then hide the loader
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 3000);
   };
 
   // Function to handle search by ingredient
@@ -106,10 +104,9 @@ const DynamicHeader = ({ type, onSearch }) => {
     const data = await response.json();
     setSearchResults(data.drinks || []);
 
-    // Wait for 5 seconds and then hide the loader
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 3000);
   };
 
   // Functions to handle all search navigation clicks
