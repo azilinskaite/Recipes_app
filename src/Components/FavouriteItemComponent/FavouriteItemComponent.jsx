@@ -1,17 +1,27 @@
-import React from 'react';
-import { useFavourites } from '../FavouritesContext/FavouritesContext.jsx';
+import React from "react";
+import { useFavourites } from "../FavouritesContext/FavouritesContext.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const FavouriteItemComponent = ({ item }) => {
   const { removeFromFavourites } = useFavourites();
 
   return (
     <div className="productCartContainer">
-      <img src={item.strDrinkThumb} alt={item.strDrink} style={{ width: "100%", height: "auto" }} />
+      <Link to={`/cocktail/${item.idDrink}`}>
+        <img
+          src={item.strDrinkThumb}
+          alt={item.strDrink}
+          style={{ width: "100%", height: "auto" }}
+        />
+      </Link>
       <div className="iconContainer">
         <h2>{item.strDrink}</h2>
-        <button className="iconDiv" onClick={() => removeFromFavourites(item.idDrink)}>
+        <button
+          className="iconDiv"
+          onClick={() => removeFromFavourites(item.idDrink)}
+        >
           <FontAwesomeIcon
             icon={faHeartSolid}
             size="2x"
@@ -26,4 +36,3 @@ const FavouriteItemComponent = ({ item }) => {
 };
 
 export default FavouriteItemComponent;
-
