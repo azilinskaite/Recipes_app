@@ -5,6 +5,7 @@
   width: 70%;
   margin: 0 auto; /* Auto margins on left and right */
   text-align: center; 
+  margin-top: 15px;
 }
 .image-container {
   display: flex;
