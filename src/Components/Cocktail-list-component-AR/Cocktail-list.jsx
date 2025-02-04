@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useFavourites } from "../FavouritesContext/FavouritesContext.jsx";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 import { CocktailDetails } from "../Recipes/Recipe.jsx";
 import { Link } from "react-router-dom";
 
-const CocktailsList = ({ items = [] }) => {
+const CocktailsList = ({ items = []}) => {
   //const [cocktail, setCocktail] = useState([]);
   //const validItems = Array.isArray(items) ? items : [];
   //const validItems = Array.isArray(items) && items.length > 0 ? items : cocktail;
