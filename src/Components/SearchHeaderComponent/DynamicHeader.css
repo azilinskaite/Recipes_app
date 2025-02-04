@@ -15,16 +15,17 @@
   }
   nav ul {
     list-style-type: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.8rem;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 1rem;
     width: 100%;
     li {
       text-align: center;
       font-weight: 500;
       margin-bottom: 0.2rem;
-      transition: 0.2s;
+      display: inline-block;
+      border-bottom: 1px solid var(--background-color);
+      transition: 0.4s;
       &:hover {
         border-bottom: 1px solid var(--font-color); 
       }
@@ -32,12 +33,9 @@
   }
 }
 
-/* .active-link {
-  text-decoration: underline;
-} */
 .search-navigation ul li.active {
   border-bottom: 1px solid var(--font-color); 
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .search-form {
@@ -70,7 +68,6 @@
 
 @media (max-width: 768px) {
   .search-header nav ul {
-    grid-template-columns: 1fr;
-    margin-bottom: 2rem;
+    flex-direction: column;
   }
 }

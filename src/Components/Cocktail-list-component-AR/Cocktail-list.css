@@ -44,4 +44,9 @@
     margin-left: auto;
     border: none;
     background-color: transparent;
+    transition: 0.2s;
+  } 
+
+  .iconDiv:hover {
+    scale: 1.08;
   } 
