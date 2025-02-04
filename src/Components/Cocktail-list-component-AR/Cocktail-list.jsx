@@ -5,7 +5,9 @@ import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import "../Cocktail-list-component-AR/Cocktail-list.css";
 
-const CocktailsList = ({ items = [] }) => {
+
+const CocktailsList = ({ items = []}) => {
+ 
   const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
   const toggleFavourite = (drink) => {
@@ -26,7 +28,7 @@ const CocktailsList = ({ items = [] }) => {
             <Link to={`/cocktail/${drink.idDrink}`}>
               <img
                 src={drink.strDrinkThumb}
-                alt={drink.strDrink}
+                alt={`A cocktail called ${drink.strDrink}`}
                 style={{ width: "100%", height: "auto" }}
               />
             </Link>
@@ -35,6 +37,7 @@ const CocktailsList = ({ items = [] }) => {
               <button
                 className="iconDiv"
                 onClick={() => toggleFavourite(drink)}
+                aria-label={`Toggle favourite for ${drink.strDrink}`}
               >
                 <FontAwesomeIcon
                   icon={

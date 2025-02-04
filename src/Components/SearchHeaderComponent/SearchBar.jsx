@@ -15,10 +15,13 @@ const SearchBar = ({ onSearch, inputRef, placeholder, inputValue, setInputValue}
   };
 
   const handleSearchClick = () => {
-    onSearch(inputValue);
+    onSearch(inputValue); 
   };
   return (
     <div className="search-bar">
+      <label htmlFor="search-input" className="sr-only">
+        Search for a cocktail
+      </label>
     <input
       type="text"
       value={inputValue}
@@ -26,11 +29,13 @@ const SearchBar = ({ onSearch, inputRef, placeholder, inputValue, setInputValue}
       className="search-input"
       placeholder= {placeholder}
       ref={inputRef}
+      aria-label="Search for a cocktail"
     />
     <button className="search-button" onClick={handleSearchClick}>
       <FontAwesomeIcon
         icon={faMagnifyingGlass}
         className="search-icon"
+        aria-label="Search"
       />
     </button>
   </div>
