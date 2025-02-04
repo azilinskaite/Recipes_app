@@ -1,4 +1,5 @@
 import "./App.css";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header Component/Header";
 import DynamicHeader from "./Components/SearchHeaderComponent/DynamicHeader";
@@ -11,6 +12,11 @@ import { CocktailDetails } from "./Components/Recipes/Recipe.jsx";
 const SignOut = () => <h2>Signing Out...</h2>;
 
 function App() {
+
+  useEffect(() => {
+    document.title = "Cocktail Kungen";
+  }, []);
+
   return (
     <FavouritesProvider>
       <Router>
