@@ -15,6 +15,7 @@ const Loader = () => {
         src="https://lottie.host/d913498c-8abe-44cd-b8df-7f220234048c/q8ix52WPZL.lottie"
         loop
         autoplay
+        speed={1.68}
         className="lottie-animation"
       />
     </div>
