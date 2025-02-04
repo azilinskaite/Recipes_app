@@ -67,7 +67,12 @@
 }
 
 @media (max-width: 768px) {
-  .search-header nav ul {
-    flex-direction: column;
+  .search-header {
+    h1 {
+      margin-bottom: 0.8rem;
+    }
+    nav ul {
+      flex-direction: column;
+    }
   }
 }
