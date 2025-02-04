@@ -18,7 +18,7 @@ const SearchBar = ({ onSearch, inputRef, placeholder, inputValue, setInputValue}
     onSearch(inputValue);
   };
   return (
-    <div className="search-bar search-form">
+    <div className="search-bar">
     <input
       type="text"
       value={inputValue}

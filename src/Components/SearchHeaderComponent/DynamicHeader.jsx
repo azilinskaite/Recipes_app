@@ -6,7 +6,7 @@ import CocktailsList from "../Cocktail-list-component-AR/Cocktail-list";
 import Loader from "../LoaderComponent/Loader";  // Import Loader
 import "./DynamicHeader.css";
 
-const DynamicHeader = ({ type }) => {
+const DynamicHeader = ({ type, onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [items, setItems] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -135,37 +135,40 @@ const DynamicHeader = ({ type }) => {
   };
 
   return (
-    <section className="search-header">
-      <h1>{type === "favorites" ? "Favourite recipes" : "Cocktail recipes"}</h1>
+    <>
+      <section className="search-header">
+        <h1>{type === "favorites" ? "Favourite recipes" : "Cocktail recipes"}</h1>
+        {type !== "favorites" && (
+          <>
+            <SearchNavigation
+              onSearchByNameClick={handleSearchByNameClick}
+              onSearchByIngredientClick={handleSearchByIngredientClick}
+              onSearchByFirstLetter={handleSearchByFirstLetterClick}
+              onRandomDrink={handleRandomDrinkClick}
+              activeItem={activeItem}
+              setActiveItem={setActiveItem}
+            />
+            <SearchBar 
+              onSearch={setSearchTerm} 
+              inputRef={searchInputRef} 
+              placeholder={placeholder}
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+            />
+          </>
+        )}
+      </section>
       {type !== "favorites" && (
-        <>
-          <SearchNavigation
-            onSearchByNameClick={handleSearchByNameClick}
-            onSearchByIngredientClick={handleSearchByIngredientClick}
-            onSearchByFirstLetter={handleSearchByFirstLetterClick}
-            onRandomDrink={handleRandomDrinkClick}
-            activeItem={activeItem}
-        setActiveItem={setActiveItem}
-          />
-          <SearchBar 
-          onSearch={setSearchTerm} 
-          inputRef={searchInputRef} 
-          placeholder={placeholder}
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          />
-  
-          {/* Show loader when loading is true */}
+        <section className="cocktail-list-container">
           {loading ? (
             <Loader />
-          ) : searchResults.length > 0 ? (
-            <CocktailsList items={searchResults} />
           ) : (
-            <CocktailsList items={items} />
+            <CocktailsList items={searchResults.length > 0 ? searchResults : items} />
           )}
-        </>
+        </section>
       )}
-    </section>
+    </>
   );
 };
-  export default DynamicHeader;
+
+export default DynamicHeader;

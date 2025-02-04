@@ -30,7 +30,7 @@ function App() {
           <header className="header">
             <Header />
           </header>
-          <div className="content">
+          <main className="content">
             <Routes>
               <Route
                 path="/"
@@ -53,7 +53,7 @@ function App() {
               <Route path="/signout" element={<SignOut />} />
               <Route path="/cocktail/:id" element={<CocktailDetails />} />
             </Routes>
-          </div>
+          </main>
           <Footer />
         </div>
       </Router>
