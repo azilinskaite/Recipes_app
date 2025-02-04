@@ -3,22 +3,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = ({ onSearch, inputRef, placeholder, inputValue, setInputValue}) => {
-  // const [input, setInput] = useState('');
+ 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.focus(); // Focus on the input field when the component mounts
     }
   }, [inputRef]);
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+    setInputValue(e.target.value); // Update the input value
   };
 
   const handleSearchClick = () => {
-    onSearch(inputValue);
+    onSearch(inputValue); 
   };
   return (
-    <div className="search-bar search-form">
+    <div className="search-bar">
+      <label htmlFor="search-input" className="sr-only">
+        Search for a cocktail
+      </label>
     <input
       type="text"
       value={inputValue}
@@ -26,29 +29,16 @@ const SearchBar = ({ onSearch, inputRef, placeholder, inputValue, setInputValue}
       className="search-input"
       placeholder= {placeholder}
       ref={inputRef}
+      aria-label="Search for a cocktail"
     />
     <button className="search-button" onClick={handleSearchClick}>
       <FontAwesomeIcon
         icon={faMagnifyingGlass}
         className="search-icon"
+        aria-label="Search"
       />
     </button>
   </div>
-//   <form className="search-form">
-//   <input
-//     type="text"
-//     value={input}
-//     onChange={handleInputChange}
-//     className="search-input"
-//     placeholder="Know what you want? Search it!"
-//   />
-//   <button className="search-button" onClick={handleSearchClick}>
-//     <FontAwesomeIcon
-//       icon={faMagnifyingGlass}
-//       className="search-icon"
-//     />
-//   </button>
-// </form>
   );
 };
 
