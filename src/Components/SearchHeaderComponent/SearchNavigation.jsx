@@ -10,16 +10,18 @@ const SearchNavigation = ({
   setActiveItem,
 }) => {
   return (
-   
-    <nav className="search-navigation">
+    <nav className="search-navigation" aria-label="Search Navigation">
       <ul>
-  
         <li
           className={activeItem === "name" ? "active" : " "}
           onClick={() => {
             setActiveItem("name");
             onSearchByNameClick();
           }}
+          role="button"
+          tabIndex="0"
+          aria-pressed={activeItem === "name"}
+          aria-label="Search by name"
         >
           Search by name
         </li>
@@ -29,6 +31,10 @@ const SearchNavigation = ({
             setActiveItem("ingredient");
             onSearchByIngredientClick();
           }}
+          role="button"
+          tabIndex="0"
+          aria-pressed={activeItem === "ingredient"}
+          aria-label="Search by ingredient"
         >
           Search by ingredient
         </li>
@@ -38,6 +44,10 @@ const SearchNavigation = ({
             setActiveItem("firstLetter");
             onSearchByFirstLetter();
           }}
+          role="button"
+          tabIndex="0"
+          aria-pressed={activeItem === "firstLetter"}
+          aria-label="Search by first letter"
         >
           Search by first letter
         </li>
@@ -47,6 +57,10 @@ const SearchNavigation = ({
             setActiveItem("random");
             onRandomDrink();
           }}
+          role="button"
+          tabIndex="0"
+          aria-pressed={activeItem === "random"}
+          aria-label="Get a random drink"
         >
           Get a random drink
         </li>
@@ -56,4 +70,3 @@ const SearchNavigation = ({
 };
 
 export default SearchNavigation;
-
