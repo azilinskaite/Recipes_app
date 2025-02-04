@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Header from "./Components/Header Component/Header";
 import DynamicHeader from "./Components/SearchHeaderComponent/DynamicHeader";
 import CocktailsList from "./Components/Cocktail-list-component-AR/Cocktail-list.jsx";
@@ -9,7 +9,13 @@ import { FavouritesProvider } from "./Components/FavouritesContext/FavouritesCon
 import FavouritesList from "./Components/FavouritesListComponent/FavouritesListComponent.jsx";
 import { CocktailDetails } from "./Components/Recipes/Recipe.jsx";
 
-const SignOut = () => <h2>Signing Out...</h2>;
+const SignOut = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    window.location.reload();
+    navigate('/');
+  }, [navigate]);
+};
 
 function App() {
 
