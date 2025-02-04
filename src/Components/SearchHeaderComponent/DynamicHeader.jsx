@@ -139,5 +139,5 @@ const DynamicHeader = ({ type }) => {
       )}
     </section>
   );
-
+};
   export default DynamicHeader;
