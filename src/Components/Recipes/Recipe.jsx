@@ -2,12 +2,17 @@ import "./Recipe.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import { useFavourites } from "../FavouritesContext/FavouritesContext.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
 export const CocktailDetails = () => {
   const { id } = useParams();
   const [cocktail, setCocktail] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
   useEffect(() => {
     const fetchCocktail = async () => {
@@ -37,38 +42,60 @@ export const CocktailDetails = () => {
       ingredients.push(ingredient);
     }
   }
-
+  const toggleFavourite = (drink) => {
+    const isFavourite = favourites.some((fav) => fav.idDrink === drink.idDrink);
+    if (isFavourite) {
+      removeFromFavourites(drink.idDrink);
+    } else {
+      addToFavourites(drink);
+    }
+  };
   return (
-    <div className="recipe_container">
-      <div className="infoDiv">
-        <div className="image-container">
-          <h2>{cocktail.strDrink}</h2>
-          <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-        </div>
-        <div className="basicInfo_Container">
-          <p>
-            <strong>Category:</strong> {cocktail.strCategory}
-          </p>
-          <p>
-            <strong>Alcoholic:</strong> {cocktail.strAlcoholic}
-          </p>
-          <h3>Ingredients:</h3>
+    //<div className="recipe_container">
+    <div className="infoDiv">
+      <div className="image-container">
+        <h2>{cocktail.strDrink}</h2>
+        <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+      </div>
+      <div className="basicInfo_Container">
+        <button className="iconDiv" onClick={() => toggleFavourite(cocktail)}>
+          <FontAwesomeIcon
+            icon={
+              favourites.some((fav) => fav.idDrink === cocktail.idDrink)
+                ? faHeartSolid
+                : faHeartRegular
+            }
+            size="2x"
+            color="red"
+            className="heart"
+          />
+        </button>
+        <p>
+          <strong>Category:</strong> {cocktail.strCategory}
+        </p>
+        <p>
+          <strong>Alcoholic:</strong> {cocktail.strAlcoholic}
+        </p>
+        <p>
+          <strong>Ingredients:</strong>
+        </p>
 
-          <ul>
-            {ingredients.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+        <ul className="ingredients">
+          {ingredients.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
 
-          <p>
-            <strong>Instructions:</strong> {cocktail.strInstructions}
-          </p>
+        <p>
+          <strong>Instructions:</strong>
+          <br /> {cocktail.strInstructions}
+        </p>
 
-          <Link to="/" className="backDiv">
-            ⬅ Back to Cocktails
-          </Link>
-        </div>
+        <Link to="/" className="backDiv">
+          ⬅ Back to Cocktails
+        </Link>
       </div>
     </div>
+    //</div>
   );
 };

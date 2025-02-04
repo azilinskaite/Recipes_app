@@ -1,29 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "./logo.png";
-import "./Header.css"; 
+import "./Header.css";
 
 const Header = () => {
   return (
-    <header className="header">
+    <>
       <div className="logo">
-        <img src={logo} alt="Cocktail Kungen" />
-       
+        <NavLink to="/">
+          <img src={logo} alt="Cocktail Kungen" />
+        </NavLink>
       </div>
       <nav>
         <ul>
           <li>
-            <Link to="/">Homepage</Link>
+            <NavLink to="/" end>
+              Homepage
+            </NavLink>
           </li>
           <li>
-            <Link to="/favorites">My Favourites</Link>
+            <NavLink to="/favorites">My Favourites</NavLink>
           </li>
           <li>
-            <Link to="/signout">Sign Out</Link>
+            <NavLink to="/signout">Sign Out</NavLink>
           </li>
         </ul>
       </nav>
-    </header>
+    </>
   );
 };
 

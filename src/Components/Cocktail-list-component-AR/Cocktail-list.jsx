@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
 import { useFavourites } from "../FavouritesContext/FavouritesContext.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
-import { CocktailDetails } from "../Recipes/Recipe.jsx";
 import { Link } from "react-router-dom";
+import "../Cocktail-list-component-AR/Cocktail-list.css";
 
 
 const CocktailsList = ({ items = []}) => {
@@ -12,17 +11,16 @@ const CocktailsList = ({ items = []}) => {
   const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
   const toggleFavourite = (drink) => {
-    const isFavourite = favourites.some(fav => fav.idDrink === drink.idDrink);
+    const isFavourite = favourites.some((fav) => fav.idDrink === drink.idDrink);
     if (isFavourite) {
       removeFromFavourites(drink.idDrink);
     } else {
       addToFavourites(drink);
     }
   };
-  const [showComponent, setshowComponent] = useState(false);
+
   return (
     <section>
-      {/* <SearchHeader /> */}
       <div className="cocktail-grid">
         {}
         {items.map((drink) => (
@@ -57,7 +55,6 @@ const CocktailsList = ({ items = []}) => {
           </div>
         ))}
       </div>
-    
     </section>
   );
 };

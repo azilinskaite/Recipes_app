@@ -8,6 +8,7 @@
     background-color: var(--background-color);
     justify-content: center;
   }
+
   .productCartContainer {
     border: 2px solid;
     padding: 0.8rem;
@@ -44,4 +45,16 @@
     margin-left: auto;
     border: none;
     background-color: transparent;
+    transition: 0.2s;
   } 
+
+  .iconDiv:hover {
+    scale: 1.08;
+  } 
+
+  @media (max-width: 768px) {
+    .cocktail-grid {
+    gap: 1rem;
+    padding: 2.5rem;
+  }
+  }

@@ -10,9 +10,9 @@ const DynamicHeader = ({ type, onSearch }) => {
   const [items, setItems] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [activeItem, setActiveItem] = useState('');
-  const [placeholder, setPlaceholder] = useState('Search for a cocktail...');
-  const [inputValue, setInputValue] = useState('');
+  const [activeItem, setActiveItem] = useState("");
+  const [placeholder, setPlaceholder] = useState("Search for a cocktail...");
+  const [inputValue, setInputValue] = useState("");
   const searchInputRef = useRef(null);
 
   // Fetch the initial items when the component mounts
@@ -57,32 +57,44 @@ const DynamicHeader = ({ type, onSearch }) => {
 
   // Function to handle search by ingredient
   const handleSearchByIngredient = async (ingredient) => {
-    setLoading(true); // Show loader
-    const response = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
-    );
-    const data = await response.json();
-    setSearchResults(data.drinks || []);
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+    setPlaceholder("For example: gin");
+    setActiveItem("ingredient");
+    setInputValue("");
 
-    // Wait for 5 seconds and then hide the loader
-    setTimeout(() => {
+    // Perform the search if there's an input value
+    if (ingredient) {
+      setLoading(true);
+      const response = await fetch(
+        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
+      );
+      const data = await response.json();
+      setSearchResults(data.drinks || []);
       setLoading(false);
-    }, 5000);
+    }
   };
 
   // Function to handle search by first letter
   const handleSearchByFirstLetter = async (letter) => {
-    setLoading(true); // Show loader
-    const response = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
-    );
-    const data = await response.json();
-    setSearchResults(data.drinks || []);
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+    setPlaceholder("For example: a");
+    setActiveItem("firstLetter");
+    setInputValue("");
 
-    // Wait for 5 seconds and then hide the loader
-    setTimeout(() => {
+    // Perform the search if there's an input value
+    if (letter && letter.length === 1) {
+      setLoading(true);
+      const response = await fetch(
+        `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
+      );
+      const data = await response.json();
+      setSearchResults(data.drinks || []);
       setLoading(false);
-    }, 5000);
+    }
   };
 
   // Function to handle random drink
@@ -105,27 +117,27 @@ const DynamicHeader = ({ type, onSearch }) => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
-    setPlaceholder('For example: mojito');
-    setActiveItem('name');
-    setInputValue('');
+    setPlaceholder("For example: mojito");
+    setActiveItem("name");
+    setInputValue("");
   };
 
   const handleSearchByIngredientClick = () => {
-    if (searchInputRef.current) {
+  if (searchInputRef.current) {
       searchInputRef.current.focus();
-    }
-    setPlaceholder('For example: gin');
-    setActiveItem('ingredient');
-    setInputValue('');
+     }
+     setPlaceholder("For example: gin");
+    setActiveItem("ingredient");
+    setInputValue("");
   };
 
   const handleSearchByFirstLetterClick = () => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
-    setPlaceholder('For example: a');
-    setActiveItem('firstLetter');
-    setInputValue('');
+    setPlaceholder("For example: a");
+    setActiveItem("firstLetter");
+   setInputValue("");
   };
 
   const handleRandomDrinkClick = () => {
@@ -133,15 +145,17 @@ const DynamicHeader = ({ type, onSearch }) => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
-    setPlaceholder('Random drink');
-    setActiveItem('random');
-    setInputValue('');
+    setPlaceholder("Random drink");
+    setActiveItem("random");
+    setInputValue("");
   };
 
   return (
     <>
       <section className="search-header">
-        <h1>{type === "favorites" ? "Favourite recipes" : "Cocktail recipes"}</h1>
+        <h1>
+          {type === "favorites" ? "Favourite recipes" : "Cocktail recipes"}
+        </h1>
         {type !== "favorites" && (
           <>
             <SearchNavigation
@@ -152,6 +166,7 @@ const DynamicHeader = ({ type, onSearch }) => {
               activeItem={activeItem}
               setActiveItem={setActiveItem}
             />
+
             <SearchBar 
               onSearch={setSearchTerm} 
               inputRef={searchInputRef} 
@@ -167,12 +182,16 @@ const DynamicHeader = ({ type, onSearch }) => {
           {loading ? (
             <Loader />
           ) : (
-            <CocktailsList items={searchResults.length > 0 ? searchResults : items} />
+
+            <CocktailsList
+              items={searchResults.length > 0 ? searchResults : items}
+            />
           )}
         </section>
       )}
     </>
   );
 };
+
 
 export default DynamicHeader;

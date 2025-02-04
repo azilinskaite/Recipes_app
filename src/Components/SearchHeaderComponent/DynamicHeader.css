@@ -7,70 +7,81 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 0 3rem;
+  max-width: 100%;
   h1 {
     font-family: var(--decorative-font);
     font-size: var(--big-text-size);
     font-weight: 500;
     margin-bottom: 2rem;
   }
-  nav ul {
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.8rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    li {
-      text-align: center;
-      font-weight: 500;
-      margin-bottom: 0.2rem;
-      transition: 0.2s;
-      &:hover {
-        border-bottom: 1px solid var(--font-color); 
-      }
-    }
+}
+
+.search-navigation ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 100%;
+  padding: 0;
+  li {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    display: inline-block;
+    border-bottom: 1px solid var(--background-color);
+    transition: 0.4s;
+    cursor: pointer;
+  }
+  li:hover,
+  li.active {
+    border-bottom: 1px solid var(--font-color);
+  }
+  li.active {
+    font-weight: 600;
   }
 }
 
-/* .active-link {
-  text-decoration: underline;
-} */
-.search-navigation ul li.active {
-  border-bottom: 1px solid var(--font-color); 
-  font-weight: bold;
-}
-
-.search-form {
+.search-bar {
   display: flex;
   position: relative;
   width: 80%;
   max-width: 40rem;
-  .search-input {
-    width: 100%;
-    border: 1px solid darkgray;
-    border-radius: 2rem;
-    padding: 0.6rem 1.2rem;
-    font-family: inherit;
-    font-size: 1rem;
-  }
-  .search-button {
-    padding: 0.6rem 0.7rem;
-    border: none;
-    border-radius: 50%;
-    background-color: var(--font-color);
-    position: absolute;
-    right: 0.25rem;
-    top: 50%;
-    transform: translateY(-50%);
-    .search-icon {
-      color: white;
-    }
-  }
+}
+
+.search-input {
+  width: 100%;
+  border: 1px solid darkgray;
+  border-radius: 2rem;
+  padding: 0.6rem 1.2rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.search-button {
+  padding: 0.6rem 0.7rem;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--font-color);
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-icon {
+  color: white;
 }
 
 @media (max-width: 768px) {
-  .search-header nav ul {
-    grid-template-columns: 1fr;
-    margin-bottom: 2rem;
+  .search-header {
+    padding: 0 1rem;
+  }
+  .search-header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+  .search-navigation ul {
+    flex-direction: column;
   }
 }
