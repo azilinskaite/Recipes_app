@@ -126,7 +126,11 @@ const DynamicHeader = ({ type }) => {
             onRandomDrink={handleRandomDrinkClick}
           />
           <SearchBar onSearch={setSearchTerm} inputRef={searchInputRef} />
-          {searchResults.length > 0 ? (
+  
+          {/* Show loader when loading is true */}
+          {loading ? (
+            <Loader />
+          ) : searchResults.length > 0 ? (
             <CocktailsList items={searchResults} />
           ) : (
             <CocktailsList items={items} />
@@ -135,7 +139,5 @@ const DynamicHeader = ({ type }) => {
       )}
     </section>
   );
-};
 
-export default DynamicHeader;
-
+  export default DynamicHeader;
