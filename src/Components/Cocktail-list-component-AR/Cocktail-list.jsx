@@ -6,7 +6,6 @@ import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 import { CocktailDetails } from "../Recipes/Recipe.jsx";
 import { Link } from "react-router-dom";
 
-
 const CocktailsList = ({ items = []}) => {
   //const [cocktail, setCocktail] = useState([]);
   //const validItems = Array.isArray(items) ? items : [];
@@ -33,7 +32,7 @@ const CocktailsList = ({ items = []}) => {
   // }, []);
 
   const toggleFavourite = (drink) => {
-    const isFavourite = favourites.some(fav => fav.idDrink === drink.idDrink);
+    const isFavourite = favourites.some((fav) => fav.idDrink === drink.idDrink);
     if (isFavourite) {
       removeFromFavourites(drink.idDrink);
     } else {
@@ -77,7 +76,6 @@ const CocktailsList = ({ items = []}) => {
           </div>
         ))}
       </div>
-    
     </section>
   );
 };
