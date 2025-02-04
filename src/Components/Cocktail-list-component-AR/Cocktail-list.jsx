@@ -63,7 +63,7 @@ const CocktailsList = ({ items = []}) => {
                 />
             </button>
           </div>
-          <p>{drink.strIngredient}</p>
+          <p>{drink.strCategory}</p>
         </div>
       ))
       }
