@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import SearchBar from "./SearchBar";
 import SearchNavigation from "./SearchNavigation";
 import CocktailsList from "../Cocktail-list-component-AR/Cocktail-list";
-//import './Cocktail-list-component-AR/Cocktail-list.css';
 import Loader from "../LoaderComponent/Loader";  // Import Loader
 import "./DynamicHeader.css";
 
@@ -82,6 +81,7 @@ const DynamicHeader = ({ type, onSearch }) => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
+    handleSearchByIngredient('');
     setPlaceholder('For example: gin');
     setActiveItem('ingredient');
     setInputValue('');
