@@ -6,7 +6,7 @@ import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 import { CocktailDetails } from "../Recipes/Recipe.jsx";
 import { Link } from "react-router-dom";
 
-const CocktailsList = ({ items = []}) => {
+const CocktailsList = ({ items = [] }) => {
   //const [cocktail, setCocktail] = useState([]);
   //const validItems = Array.isArray(items) ? items : [];
   //const validItems = Array.isArray(items) && items.length > 0 ? items : cocktail;
@@ -39,7 +39,7 @@ const CocktailsList = ({ items = []}) => {
       addToFavourites(drink);
     }
   };
-  const [showComponent, setshowComponent] = useState(false);
+
   return (
     <section>
       {/* <SearchHeader /> */}
