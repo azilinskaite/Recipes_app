@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import SearchBar from "./SearchBar";
 import SearchNavigation from "./SearchNavigation";
 import CocktailsList from "../Cocktail-list-component-AR/Cocktail-list";
+//import './Cocktail-list-component-AR/Cocktail-list.css';
 import Loader from "../LoaderComponent/Loader";  // Import Loader
 import "./DynamicHeader.css";
 
@@ -54,6 +55,34 @@ const DynamicHeader = ({ type, onSearch }) => {
     }, 5000);
   };
 
+  const handleSearchByIngredient = async (ingredient) => {
+    setLoading(true); // Show loader
+    const response = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
+    );
+    const data = await response.json();
+    setSearchResults(data.drinks || []);
+
+    // Wait for 5 seconds and then hide the loader
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  };
+
+  const handleSearchByFirstLetter = async (letter) => {
+    setLoading(true); // Show loader
+    const response = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
+    );
+    const data = await response.json();
+    setSearchResults(data.drinks || []);
+
+    // Wait for 5 seconds and then hide the loader
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  };
+
   const handleRandomDrink = async () => {
     setLoading(true); // Show loader
     const response = await fetch(
@@ -81,7 +110,6 @@ const DynamicHeader = ({ type, onSearch }) => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
-    handleSearchByIngredient('');
     setPlaceholder('For example: gin');
     setActiveItem('ingredient');
     setInputValue('');
