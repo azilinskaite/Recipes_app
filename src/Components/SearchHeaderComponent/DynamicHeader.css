@@ -26,14 +26,18 @@
       margin-bottom: 0.2rem;
       transition: 0.2s;
       &:hover {
-        text-decoration: underline;
+        border-bottom: 1px solid var(--font-color); 
       }
     }
   }
 }
 
-.active-link {
+/* .active-link {
   text-decoration: underline;
+} */
+.search-navigation ul li.active {
+  border-bottom: 1px solid var(--font-color); 
+  font-weight: bold;
 }
 
 .search-form {

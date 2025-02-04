@@ -1,38 +1,52 @@
-import React, { useState } from "react";
+import React from "react";
 import "./DynamicHeader.css";
 
-const SearchNavigation = ({ onSearchByNameClick, onSearchByIngredientClick, onSearchByFirstLetter, onRandomDrink }) => {
-  const [activeItem, setActiveItem] = useState(null);
-
-  const handleItemClick = (index, callback) => {
-    setActiveItem(index);
-    callback();
-  };
-
+const SearchNavigation = ({
+  onSearchByNameClick,
+  onSearchByIngredientClick,
+  onSearchByFirstLetter,
+  onRandomDrink,
+  activeItem,
+  setActiveItem,
+}) => {
   return (
+   
     <nav className="search-navigation">
       <ul>
-        <li 
-          className={activeItem === 0 ? "active-link" : "inactive-link"}
-          onClick={() => handleItemClick(0, onSearchByNameClick)}
+  
+        <li
+          className={activeItem === "name" ? "active" : " "}
+          onClick={() => {
+            setActiveItem("name");
+            onSearchByNameClick();
+          }}
         >
           Search by name
         </li>
-        <li 
-          className={activeItem === 1 ? "active-link" : "inactive-link"}
-          onClick={() => handleItemClick(1, onSearchByIngredientClick)}
+        <li
+          className={activeItem === "ingredient" ? "active" : " "}
+          onClick={() => {
+            setActiveItem("ingredient");
+            onSearchByIngredientClick();
+          }}
         >
           Search by ingredient
         </li>
-        <li 
-          className={activeItem === 2 ? "active-link" : "inactive-link"}
-          onClick={() => handleItemClick(2, onSearchByFirstLetter)}
+        <li
+          className={activeItem === "firstLetter" ? "active" : " "}
+          onClick={() => {
+            setActiveItem("firstLetter");
+            onSearchByFirstLetter();
+          }}
         >
           Search by first letter
         </li>
-        <li 
-          className={activeItem === 3 ? "active-link" : "inactive-link"}
-          onClick={() => handleItemClick(3, onRandomDrink)}
+        <li
+          className={activeItem === "random" ? "active" : " "}
+          onClick={() => {
+            setActiveItem("random");
+            onRandomDrink();
+          }}
         >
           Get a random drink
         </li>
@@ -42,3 +56,4 @@ const SearchNavigation = ({ onSearchByNameClick, onSearchByIngredientClick, onSe
 };
 
 export default SearchNavigation;
+

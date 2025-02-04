@@ -11,6 +11,9 @@ const DynamicHeader = ({ type }) => {
   const [items, setItems] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [activeItem, setActiveItem] = useState('');
+  const [placeholder, setPlaceholder] = useState('Search for a cocktail...');
+  const [inputValue, setInputValue] = useState('');
   const searchInputRef = useRef(null);
 
   // Fetch the initial items when the component mounts
@@ -98,20 +101,37 @@ const DynamicHeader = ({ type }) => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
+    setPlaceholder('For example: mojito');
+    setActiveItem('name');
+    setInputValue('');
   };
 
   const handleSearchByIngredientClick = () => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
+    setPlaceholder('For example: gin');
+    setActiveItem('ingredient');
+    setInputValue('');
   };
 
   const handleSearchByFirstLetterClick = () => {
-    handleSearchByFirstLetter("a");
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+    setPlaceholder('For example: a');
+    setActiveItem('firstLetter');
+    setInputValue('');
   };
 
   const handleRandomDrinkClick = () => {
     handleRandomDrink();
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+    setPlaceholder('Random drink');
+    setActiveItem('random');
+    setInputValue('');
   };
 
   return (
@@ -124,8 +144,16 @@ const DynamicHeader = ({ type }) => {
             onSearchByIngredientClick={handleSearchByIngredientClick}
             onSearchByFirstLetter={handleSearchByFirstLetterClick}
             onRandomDrink={handleRandomDrinkClick}
+            activeItem={activeItem}
+        setActiveItem={setActiveItem}
           />
-          <SearchBar onSearch={setSearchTerm} inputRef={searchInputRef} />
+          <SearchBar 
+          onSearch={setSearchTerm} 
+          inputRef={searchInputRef} 
+          placeholder={placeholder}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          />
   
           {/* Show loader when loading is true */}
           {loading ? (
