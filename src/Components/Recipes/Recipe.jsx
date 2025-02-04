@@ -39,36 +39,37 @@ export const CocktailDetails = () => {
   }
 
   return (
-    <div className="recipe_container">
-      <div className="infoDiv">
-        <div className="image-container">
-          <h2>{cocktail.strDrink}</h2>
-          <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-        </div>
-        <div className="basicInfo_Container">
-          <p>
-            <strong>Category:</strong> {cocktail.strCategory}
-          </p>
-          <p>
-            <strong>Alcoholic:</strong> {cocktail.strAlcoholic}
-          </p>
-          <h3>Ingredients:</h3>
+    //<div className="recipe_container">
+    <div className="infoDiv">
+      <div className="image-container">
+        <h2>{cocktail.strDrink}</h2>
+        <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+      </div>
+      <div className="basicInfo_Container">
+        <p>
+          <strong>Category:</strong> {cocktail.strCategory}
+        </p>
+        <p>
+          <strong>Alcoholic:</strong> {cocktail.strAlcoholic}
+        </p>
+        <h3>Ingredients:</h3>
 
-          <ul>
-            {ingredients.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+        <ul className="ingredients">
+          {ingredients.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
 
-          <p>
-            <strong>Instructions:</strong> {cocktail.strInstructions}
-          </p>
+        <p>
+          <strong>Instructions:</strong>
+          <br /> {cocktail.strInstructions}
+        </p>
 
-          <Link to="/" className="backDiv">
-            ⬅ Back to Cocktails
-          </Link>
-        </div>
+        <Link to="/" className="backDiv">
+          ⬅ Back to Cocktails
+        </Link>
       </div>
     </div>
+    //</div>
   );
 };
