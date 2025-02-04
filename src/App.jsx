@@ -15,7 +15,9 @@ function App() {
     <FavouritesProvider>
       <Router>
         <div className="App">
-          <Header />
+          <header className="header">
+            <Header />
+          </header>
           <div className="content">
             <Routes>
               <Route
