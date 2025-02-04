@@ -1,25 +1,30 @@
-import React, { useState} from "react";
+import React, { useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const SearchBar = ({ onSearch, inputRef}) => {
-  const [input, setInput] = useState('');
+const SearchBar = ({ onSearch, inputRef, placeholder, inputValue, setInputValue}) => {
+  // const [input, setInput] = useState('');
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [inputRef]);
 
   const handleInputChange = (e) => {
-    setInput(e.target.value);
+    setInputValue(e.target.value);
   };
 
   const handleSearchClick = () => {
-    onSearch(input);
+    onSearch(inputValue);
   };
   return (
     <div className="search-bar search-form">
     <input
       type="text"
-      value={input}
+      value={inputValue}
       onChange={handleInputChange}
       className="search-input"
-      placeholder="Search for a cocktail..."
+      placeholder= {placeholder}
       ref={inputRef}
     />
     <button className="search-button" onClick={handleSearchClick}>
