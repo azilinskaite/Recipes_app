@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import SearchHeader from "../SearchHeaderComponent/SearchHeaderComponent.jsx";
 import { useFavourites } from "../FavouritesContext/FavouritesContext.jsx";
-import { useFavourites } from '../FavouritesContext/FavouritesContext.jsx'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
-import { Recipe } from "../Recipes/Recipe.jsx";
-
+import { CocktailDetails } from "../Recipes/Recipe.jsx";
+import { Link } from "react-router-dom";
 
 const CocktailsList = ({ items = [] }) => {
   //const [cocktail, setCocktail] = useState([]);
@@ -16,7 +15,7 @@ const CocktailsList = ({ items = [] }) => {
   const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
   const toggleFavourite = (drink) => {
-    const isFavourite = favourites.some((fav) => fav.idDrink === drink.idDrink)
+    const isFavourite = favourites.some((fav) => fav.idDrink === drink.idDrink);
     if (isFavourite) {
       removeFromFavourites(drink.idDrink);
     } else {
@@ -24,53 +23,43 @@ const CocktailsList = ({ items = [] }) => {
     }
   };
 
- const toggleFavourite = (drink) => {
-  const isFavourite = favourites.some(fav => fav.idDrink === drink.idDrink);
   const [showComponent, setshowComponent] = useState(false);
   return (
     <section>
-      <SearchHeader />
+      {/* <SearchHeader /> */}
       <div className="cocktail-grid">
-        {" "}
         {}
-        {cocktail.map((drink) =>
-          !showComponent ? (
-            <div
-              key={drink.idDrink}
-              className="productCartContainer"
-              onClick={() => setshowComponent(true)}
-            >
+        {items.map((drink) => (
+          <div key={drink.idDrink} className="productCartContainer">
+            <Link to={`/cocktail/${drink.idDrink}`}>
               <img
                 src={drink.strDrinkThumb}
                 alt={drink.strDrink}
                 style={{ width: "100%", height: "auto" }}
               />
-              <div className="iconContainer">
-                <h2>{drink.strDrink}</h2>
-                <button
-                  className="iconDiv"
-                  onClick={() => toggleFavourite(drink)}
-                >
-                  <FontAwesomeIcon
-                    icon={
-                      favourites.some((fav) => fav.idDrink === drink.idDrink)
-                        ? faHeartSolid
-                        : faHeartRegular
-                    }
-                    size="2x"
-                    color="red"
-                    className="heart"
-                  />
-                </button>
-              </div>
-              <p>{drink.strIngredient}</p>
+            </Link>
+            <div className="iconContainer">
+              <h2>{drink.strDrink}</h2>
+              <button
+                className="iconDiv"
+                onClick={() => toggleFavourite(drink)}
+              >
+                <FontAwesomeIcon
+                  icon={
+                    favourites.some((fav) => fav.idDrink === drink.idDrink)
+                      ? faHeartSolid
+                      : faHeartRegular
+                  }
+                  size="2x"
+                  color="red"
+                  className="heart"
+                />
+              </button>
             </div>
-          ) : (
-            <Recipe />
-          )
-        )}
+            <p>{drink.strIngredient}</p>
+          </div>
+        ))}
       </div>
-
 
       {/* <SearchHeader/> */}
       <div className="cocktail-grid">
@@ -95,7 +84,6 @@ const CocktailsList = ({ items = [] }) => {
                       ? faHeartSolid
                       : faHeartRegular
                   }
-
                   size="2x"
                   color="red"
                   className="heart"
@@ -106,7 +94,6 @@ const CocktailsList = ({ items = [] }) => {
           </div>
         ))}
       </div>
-
     </section>
   );
 };
