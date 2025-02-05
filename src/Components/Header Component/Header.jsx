@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logo from "./logo.png";
 import "./Header.css";
 
@@ -22,7 +22,7 @@ const Header = () => {
             <NavLink to="/favorites">My Favourites</NavLink>
           </li>
           <li>
-            <NavLink to="/signout">Sign Out</NavLink>
+            <Link to="/signout">Sign Out</Link>
           </li>
         </ul>
       </nav>
