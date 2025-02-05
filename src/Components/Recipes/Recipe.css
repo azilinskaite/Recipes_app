@@ -6,6 +6,7 @@
   text-align: center; 
   margin-top: 15px;
   gap: 2%;
+ 
 }
 
 .image-container h2{
@@ -76,12 +77,32 @@ ul {
 
 }
 @media (max-width: 768px) {
-  .infoDiv{
-    display: flex;
+  .infoDiv {
     flex-direction: column;
-  }
-  .image{
     width: 90%;
-   
+    gap: 3%;
+    justify-content: center;
+    align-items: center;
   }
+
+  .image {
+    width: 80%;
+    height: auto;
+    margin-bottom: 30px;
+  }
+
+  .basicInfo_Container {
+    width: 80%;
+    height: auto; 
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+ 
+  .image-container h2 {
+    font-size: 1.2rem; 
+    padding-bottom: 5px;
+  }
+
+
 }
