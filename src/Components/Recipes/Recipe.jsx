@@ -53,23 +53,27 @@ export const CocktailDetails = () => {
   return (
     //<div className="recipe_container">
     <div className="infoDiv">
-      <div className="image-container">
-        <h2>{cocktail.strDrink}</h2>
-        <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-      </div>
+      <img
+        src={cocktail.strDrinkThumb}
+        alt={cocktail.strDrink}
+        className="image"
+      />
       <div className="basicInfo_Container">
-        <button className="iconDiv" onClick={() => toggleFavourite(cocktail)}>
-          <FontAwesomeIcon
-            icon={
-              favourites.some((fav) => fav.idDrink === cocktail.idDrink)
-                ? faHeartSolid
-                : faHeartRegular
-            }
-            size="2x"
-            color="red"
-            className="heart"
-          />
-        </button>
+        <div className="titleContainer">
+          <h2>{cocktail.strDrink}</h2>
+          <button className="iconDiv" onClick={() => toggleFavourite(cocktail)}>
+            <FontAwesomeIcon
+              icon={
+                favourites.some((fav) => fav.idDrink === cocktail.idDrink)
+                  ? faHeartSolid
+                  : faHeartRegular
+              }
+              size="2x"
+              color="red"
+              className="heart"
+            />
+          </button>
+        </div>
         <p>
           <strong>Category:</strong> {cocktail.strCategory}
         </p>
@@ -88,8 +92,8 @@ export const CocktailDetails = () => {
 
         <p>
           <strong>Instructions:</strong>
-          <br /> {cocktail.strInstructions}
         </p>
+        <p className="instructions">{cocktail.strInstructions}</p>
 
         <Link to="/" className="backDiv">
           ⬅ Back to Cocktails
