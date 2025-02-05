@@ -1,61 +1,86 @@
 
 .infoDiv{
   display: flex;
-  box-shadow: inset 0px 0px 15px 5px red;
   width: 70%;
-  margin: 0 auto; /* Auto margins on left and right */
+  margin: 0 auto; 
   text-align: center; 
   margin-top: 15px;
+  gap: 2%;
 }
-.image-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
+
 .image-container h2{
   padding-bottom: 10px;
 }
-.image-container img{
-  width: 375px;
-  height: 500px;
+.image{
+  width: 40%;
+  height: 40%;
   padding: 20px;
   margin-bottom: 55px;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  border: 1.5px solid var(--font-color);
+  
 }
 .basicInfo_Container{
-  border: 2px solid;
-  padding: 30px;
-  font-size: 1.3rem;
+  border: 1.5px solid var(--font-color);
+  padding: 25px;
+  font-size: 1rem;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 56px;
-  margin-left: 45px;
-  margin-bottom: 55px;
-  width: 50%;
-  line-height: 1.7rem;
+  width: 90%;
+  height: 39%;
+  line-height: 1.5rem;
+  font-family: var(--base-font);
 }
 .basicInfo_Container p{
-  padding: 5px; 
+  padding-top: 5px;
+}
+ul {
+  list-style-type: none;
+  padding: 0; 
+  margin: 0; 
+}
+.instructions{
+  text-align: start;
+ 
 }
 .backDiv{
-  border: 2px solid red;
-  color: red;
+  border: 1.5px solid #FF3904;;
+  color: #FF3904;
   text-decoration: none;
   width: fit-content;
   padding: 5px;
-  align-self: center;
+  align-self: flex-start;
   margin: 20px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 20px;
   font-weight: 500;
 }
+.backDiv:hover{
+  background-color: #FF3904;
+  color: white;
+}
+
 .ingredients{
-  padding-left: 50px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding-left: 2px;
+}
+.titleContainer{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 5px;
+
+}
+@media (max-width: 768px) {
+  .infoDiv{
+    display: flex;
+    flex-direction: column;
+  }
+  .image{
+    width: 90%;
+   
+  }
 }
