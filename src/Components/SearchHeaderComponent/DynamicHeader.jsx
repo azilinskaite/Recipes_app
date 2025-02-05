@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import SearchBar from "./SearchBar";
 import SearchNavigation from "./SearchNavigation";
 import CocktailsList from "../Cocktail-list-component-AR/Cocktail-list";
-import Loader from "../LoaderComponent/Loader";  // Import Loader
+import Loader from "../LoaderComponent/Loader"; // Import Loader
 import "./DynamicHeader.css";
 
 const DynamicHeader = ({ type, onSearch }) => {
@@ -119,23 +119,23 @@ const DynamicHeader = ({ type, onSearch }) => {
     setInputValue("");
   };
 
-  const handleSearchByIngredientClick = () => {
-  if (searchInputRef.current) {
-      searchInputRef.current.focus();
-     }
-     setPlaceholder("For example: gin");
-    setActiveItem("ingredient");
-    setInputValue("");
-  };
+  // const handleSearchByIngredientClick = () => {
+  //   if (searchInputRef.current) {
+  //     searchInputRef.current.focus();
+  //   }
+  //   setPlaceholder("For example: gin");
+  //   setActiveItem("ingredient");
+  //   setInputValue("");
+  // };
 
-  const handleSearchByFirstLetterClick = () => {
-    if (searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-    setPlaceholder("For example: a");
-    setActiveItem("firstLetter");
-   setInputValue("");
-  };
+  // const handleSearchByFirstLetterClick = () => {
+  //   if (searchInputRef.current) {
+  //     searchInputRef.current.focus();
+  //   }
+  //   setPlaceholder("For example: a");
+  //   setActiveItem("firstLetter");
+  //   setInputValue("");
+  // };
 
   const handleRandomDrinkClick = () => {
     handleRandomDrink();
@@ -157,16 +157,16 @@ const DynamicHeader = ({ type, onSearch }) => {
           <>
             <SearchNavigation
               onSearchByNameClick={handleSearchByNameClick}
-              onSearchByIngredientClick={handleSearchByIngredientClick}
-              onSearchByFirstLetter={handleSearchByFirstLetterClick}
+              onSearchByIngredientClick={handleSearchByIngredient}
+              onSearchByFirstLetter={handleSearchByFirstLetter}
               onRandomDrink={handleRandomDrinkClick}
               activeItem={activeItem}
               setActiveItem={setActiveItem}
             />
 
-            <SearchBar 
-              onSearch={setSearchTerm} 
-              inputRef={searchInputRef} 
+            <SearchBar
+              onSearch={setSearchTerm}
+              inputRef={searchInputRef}
               placeholder={placeholder}
               inputValue={inputValue}
               setInputValue={setInputValue}
@@ -179,7 +179,6 @@ const DynamicHeader = ({ type, onSearch }) => {
           {loading ? (
             <Loader />
           ) : (
-
             <CocktailsList
               items={searchResults.length > 0 ? searchResults : items}
             />
@@ -189,6 +188,5 @@ const DynamicHeader = ({ type, onSearch }) => {
     </>
   );
 };
-
 
 export default DynamicHeader;
