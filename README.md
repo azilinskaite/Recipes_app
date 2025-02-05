@@ -6,7 +6,7 @@ Cocktail Kungen is a React-based web application that allows users to explore a 
 https://cocktail-kungen.netlify.app/
 
 
-##Features: 
+## Features: 
 
 - Search Functionality: Users can search for cocktails based on different categories. (by name, ingredient, first letter or random).
 
