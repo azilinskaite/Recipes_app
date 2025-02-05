@@ -4,8 +4,8 @@
   width: 70%;
   margin: 0 auto; 
   text-align: center; 
-  margin-top: 15px;
-  gap: 2%;
+  margin-top: 2%;
+  gap: 5%;
  
 }
 
@@ -16,7 +16,6 @@
   width: 400px;
   height: 400px;
   padding: 20px;
-  margin-bottom: 55px;
   border: 1.5px solid var(--font-color);
   
 }
