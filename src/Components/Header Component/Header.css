@@ -46,6 +46,19 @@ nav ul li a.active {
   background-color: var(--font-color);
 }
 
+nav ul li a.nav-link {
+  text-decoration: none;
+  color: var(--font-color);
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--font-color);
+  border-radius: 1rem;
+}
+
+nav ul li a.nav-link:hover {
+  color: var(--background-color);
+  background-color: var(--font-color);
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 1rem;
