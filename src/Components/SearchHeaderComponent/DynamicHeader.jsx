@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import SearchBar from "./SearchBar";
 import SearchNavigation from "./SearchNavigation";
 import CocktailsList from "../Cocktail-list-component-AR/Cocktail-list";
 import Loader from "../LoaderComponent/Loader"; // Import Loader
 import "./DynamicHeader.css";
 
-const DynamicHeader = ({ type, onSearch }) => {
+const DynamicHeader = ({ type }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [items, setItems] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -15,43 +15,65 @@ const DynamicHeader = ({ type, onSearch }) => {
   const [inputValue, setInputValue] = useState("");
   const searchInputRef = useRef(null);
 
+  // Reusable error handler
+  const handleApiError = (error, errorMessage) => {
+    console.error(errorMessage, error);
+    setSearchResults([]);
+    setLoading(false);
+  };
+
   // Fetch the initial items when the component mounts
   useEffect(() => {
     const fetchInitialItems = async () => {
       setLoading(true); // Show loader
-      const response = await fetch(
-        "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
-      );
-      const data = await response.json();
-      setItems(data.drinks || []);
-
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
+      try {
+        const response = await fetch(
+          "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setItems(data.drinks || []);
+      } catch (error) {
+        handleApiError(error, "Error fetching initial items:");
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 3000);
+      }
     };
 
     fetchInitialItems();
   }, []);
 
+  // Function to handle search by name
+  const handleSearch = useCallback(async (term) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${term}`
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setSearchResults(data.drinks || []);
+    } catch (error) {
+      handleApiError(error, "Error searching for cocktails:");
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    }
+  }, []);
+  // Empty dependancy array means that function doesn't get changed
+
   useEffect(() => {
     if (searchTerm) {
       handleSearch(searchTerm);
     }
-  }, [searchTerm]);
-
-  // Function to handle search by name
-  const handleSearch = async (term) => {
-    setLoading(true); // Show loader
-    const response = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${term}`
-    );
-    const data = await response.json();
-    setSearchResults(data.drinks || []);
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  };
+  }, [searchTerm, handleSearch]);
 
   // Function to handle search by ingredient
   const handleSearchByIngredient = async (ingredient) => {
@@ -65,12 +87,20 @@ const DynamicHeader = ({ type, onSearch }) => {
     // Perform the search if there's an input value
     if (ingredient) {
       setLoading(true);
-      const response = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
-      );
-      const data = await response.json();
-      setSearchResults(data.drinks || []);
-      setLoading(false);
+      try {
+        const response = await fetch(
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setSearchResults(data.drinks || []);
+      } catch (error) {
+        handleApiError(error, "Error searching by ingredient:");
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -83,30 +113,45 @@ const DynamicHeader = ({ type, onSearch }) => {
     setActiveItem("firstLetter");
     setInputValue("");
 
-    // Perform the search if there's an input value
+    // Perform search when there is an input
     if (letter && letter.length === 1) {
       setLoading(true);
-      const response = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
-      );
-      const data = await response.json();
-      setSearchResults(data.drinks || []);
-      setLoading(false);
+      try {
+        const response = await fetch(
+          `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setSearchResults(data.drinks || []);
+      } catch (error) {
+        handleApiError(error, "Error searching by first letter:");
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
   // Function to handle random drink
   const handleRandomDrink = async () => {
-    setLoading(true); // Show loader
-    const response = await fetch(
-      "https://www.thecocktaildb.com/api/json/v1/1/random.php"
-    );
-    const data = await response.json();
-    setSearchResults(data.drinks || []);
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    setLoading(true);
+    try {
+      const response = await fetch(
+        "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setSearchResults(data.drinks || []);
+    } catch (error) {
+      handleApiError(error, "Error fetching random drink:");
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    }
   };
 
   // Functions to handle all search navigation clicks
@@ -118,24 +163,6 @@ const DynamicHeader = ({ type, onSearch }) => {
     setActiveItem("name");
     setInputValue("");
   };
-
-  // const handleSearchByIngredientClick = () => {
-  //   if (searchInputRef.current) {
-  //     searchInputRef.current.focus();
-  //   }
-  //   setPlaceholder("For example: gin");
-  //   setActiveItem("ingredient");
-  //   setInputValue("");
-  // };
-
-  // const handleSearchByFirstLetterClick = () => {
-  //   if (searchInputRef.current) {
-  //     searchInputRef.current.focus();
-  //   }
-  //   setPlaceholder("For example: a");
-  //   setActiveItem("firstLetter");
-  //   setInputValue("");
-  // };
 
   const handleRandomDrinkClick = () => {
     handleRandomDrink();
