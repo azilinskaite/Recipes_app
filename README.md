@@ -49,7 +49,7 @@ https://cocktail-kungen.netlify.app/
 
 - Open the app in your browser at http://localhost:3000
 
-## Conribution:
+## Contributions:
 - Priyanka: Header, Footer, Search navigation, Screen Reader
 - Adele: Search Header, Favourite Page, page responsiveness
 - Anita: Cocktail-cards, Detailed Recipe Pages, Page responsiveness
