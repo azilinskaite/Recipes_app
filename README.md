@@ -1,6 +1,6 @@
 # Cocktail Kungen react app
 
-Cocktail Kungen is a React-based web application that allows users to explore a collection of cocktail recipes. Users can search for drinks by categories, view detailed recipes, and manage to save their favorite cocktails. The project is built using TheCocktailDB API to fetch cocktail data dynamically.
+Cocktail Kungen is a React-based web application that allows users to explore a collection of cocktail recipes. Users can search for drinks by categories, view detailed recipes, and manage to save their favourite cocktails. The project is built using TheCocktailDB API to fetch cocktail data dynamically.
 
 ## Live Demo
 https://cocktail-kungen.netlify.app/
@@ -10,7 +10,7 @@ https://cocktail-kungen.netlify.app/
 
 - Search Functionality: Users can search for cocktails based on different categories. (by name, ingredient, first letter or random).
 
-- Favorite Cocktails: Users can save their favorite drinks by clicking the heart icon.
+- Favourite Cocktails: Users can save their favourite drinks by clicking the heart icon.
 
 - Detailed Recipe Pages: View ingredients, instructions, and images.
 
