@@ -15,8 +15,12 @@ export const FavouritesProvider = ({ children }) =>
         prevFavourites.filter(item => item.idDrink !== itemId));
     };
 
+    const clearAllFavourites = () => {
+        setFavourites([]);
+      };
+
     return (
-        <FavouritesContext.Provider value={{ favourites, addToFavourites, removeFromFavourites }}>{children}</FavouritesContext.Provider>
+        <FavouritesContext.Provider value={{ favourites, addToFavourites, removeFromFavourites, clearAllFavourites }}>{children}</FavouritesContext.Provider>
     )
 };
 

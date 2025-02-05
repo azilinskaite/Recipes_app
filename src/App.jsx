@@ -8,13 +8,18 @@ import Footer from "./Components/Footer Component/Footer.jsx";
 import { FavouritesProvider } from "./Components/FavouritesContext/FavouritesContext.jsx";
 import FavouritesList from "./Components/FavouritesListComponent/FavouritesListComponent.jsx";
 import { CocktailDetails } from "./Components/Recipes/Recipe.jsx";
+import { useFavourites } from "./Components/FavouritesContext/FavouritesContext.jsx";
 
 const SignOut = () => {
   const navigate = useNavigate();
+  const { clearAllFavourites } = useFavourites();
+  
   useEffect(() => {
-    window.location.reload();
+    clearAllFavourites();
     navigate('/');
-  }, [navigate]);
+  }, [navigate, clearAllFavourites]);
+
+  return null;
 };
 
 function App() {
