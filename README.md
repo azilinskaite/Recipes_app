@@ -1,7 +1,56 @@
-Cocktail Kungen react app.
+# Cocktail Kungen react app
 
-This React-based website is a cocktail recipe finder that allows users to search for and save their favorite cocktail recipes.
+Cocktail Kungen is a React-based web application that allows users to explore a collection of cocktail recipes. Users can search for drinks by categories, view detailed recipes, and manage to save their favorite cocktails. The project is built using TheCocktailDB API to fetch cocktail data dynamically.
 
-Features: search function for cocktail recipes (by name, ingredient, first letter or random), function to save and manage favourite cocktails by clicking or un-clicking the heart icon, detailed cocktail information from API (photo, name, category, ingredients, instructions), user-friendly interface with responsive design.
+## Live Demo
+https://cocktail-kungen.netlify.app/
 
-Technologies used: HTML, CSS, React, built-in React features: useState, useEffect, custom hook: FavouritesContext, etc.
+
+##Features: 
+
+- Search Functionality: Users can search for cocktails based on different categories. (by name, ingredient, first letter or random).
+
+- Favorite Cocktails: Users can save their favorite drinks by clicking the heart icon.
+
+- Detailed Recipe Pages: View ingredients, instructions, and images.
+
+- Responsive Design: Optimized for desktop and mobile devices.
+
+- API Integration: Fetches real-time data from TheCocktailDB API.
+
+
+## Technologies Used
+
+- Frontend: React, JSX, CSS
+
+- State Management: React Hooks (useState, useEffect, custom hook, FavouritesContext)
+
+- API: TheCocktailDB API
+
+- Deployment: Netlify
+
+- Version Control: Git & GitHub
+
+## Installation & Setup
+
+- Clone the repository:
+
+- git clone https://github.com/azilinskaite/Project_2.git
+
+- Navigate to the project folder:
+
+- Install dependencies:
+
+- npm install
+
+- Start the development server:
+
+- npm start
+
+- Open the app in your browser at http://localhost:3000
+
+## Conribution:
+- Priyanka: Header, Footer, Search navigation, Screen Reader
+- Adele: Search Header, Favourite Page, page responsiveness
+- Anita: Cocktail-cards, Detailed Recipe Pages, Page responsiveness
+- Alex: Cocktail-Grid, loader
