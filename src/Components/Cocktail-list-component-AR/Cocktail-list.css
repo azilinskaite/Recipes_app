@@ -3,7 +3,7 @@
 .cocktail-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    gap: 4.5rem;
+    gap: 4rem;
     padding: 3.5rem 11rem 6rem 11rem;
     background-color: var(--background-color);
     justify-content: center;
@@ -14,10 +14,15 @@
     padding: 0.8rem;
     display: flex;
     flex-direction: column;
+    max-width: 24rem;
+    margin: 0 auto;
   }
   
   .productCartContainer img {
     margin-bottom: 0.8rem;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
   
   .productCartContainer h2 {
@@ -54,7 +59,7 @@
 
   @media (max-width: 768px) {
     .cocktail-grid {
-    gap: 1rem;
-    padding: 2.5rem;
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
   }
   }
