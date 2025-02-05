@@ -86,13 +86,13 @@ ul {
   }
 
   .image {
-    width: 60%;
+    width: 80%;
     height: auto;
     margin-bottom: 30px;
   }
 
   .basicInfo_Container {
-    width: 60%;
+    width: 80%;
     height: auto; 
     padding: 10px;
     font-size: 0.9rem;
