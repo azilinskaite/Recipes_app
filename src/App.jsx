@@ -10,7 +10,7 @@ import FavouritesList from "./Components/FavouritesListComponent/FavouritesListC
 import { CocktailDetails } from "./Components/Recipes/Recipe.jsx";
 import { useFavourites } from "./Components/FavouritesContext/FavouritesContext.jsx";
 
-const SignOut = () => {
+const SignOutHandler = () => {
   const navigate = useNavigate();
   const { clearAllFavourites } = useFavourites();
   
@@ -55,7 +55,7 @@ function App() {
                   </>
                 }
               />
-              <Route path="/signout" element={<SignOut />} />
+              <Route path="/signout" element={<SignOutHandler />} />
               <Route path="/cocktail/:id" element={<CocktailDetails />} />
             </Routes>
           </main>
