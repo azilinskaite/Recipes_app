@@ -1,6 +1,11 @@
 import "./App.css";
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Header from "./Components/Header Component/Header";
 import DynamicHeader from "./Components/SearchHeaderComponent/DynamicHeader";
 import CocktailsList from "./Components/Cocktail-list-component-AR/Cocktail-list.jsx";
@@ -13,17 +18,16 @@ import { useFavourites } from "./Components/FavouritesContext/FavouritesContext.
 const SignOutHandler = () => {
   const navigate = useNavigate();
   const { clearAllFavourites } = useFavourites();
-  
+
   useEffect(() => {
     clearAllFavourites();
-    navigate('/');
+    navigate("/");
   }, [navigate, clearAllFavourites]);
 
   return null;
 };
 
 function App() {
-
   useEffect(() => {
     document.title = "Cocktail Kungen";
   }, []);
@@ -32,9 +36,8 @@ function App() {
     <FavouritesProvider>
       <Router>
         <div className="App">
-          <header className="header">
-            <Header />
-          </header>
+          {/* delete the <header> tag and move into the component */}
+          <Header />
           <main className="content">
             <Routes>
               <Route
