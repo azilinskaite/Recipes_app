@@ -59,15 +59,23 @@ nav ul li a.nav-link:hover {
   background-color: var(--font-color);
 }
 
+/* Add class to include logo in navbar */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 1rem;
     nav ul {
       flex-direction: column;
-      align-items: flex-end
+      align-items: flex-end;
     }
     .logo img {
       max-width: 6rem;
     }
-  } 
+  }
 }

@@ -9,57 +9,74 @@ const SearchNavigation = ({
   activeItem,
   setActiveItem,
 }) => {
+  // Function to check if the item is active could use a switch for better readability
+  const isActiveItem = (item) => {
+    switch (item) {
+      case "name":
+        return activeItem === "name";
+      case "ingredient":
+        return activeItem === "ingredient";
+      case "random":
+        return activeItem === "random";
+      case "firstLetter":
+        return activeItem === "firstLetter";
+      default:
+        return false;
+    }
+  };
+
   return (
     <nav className="search-navigation" aria-label="Search Navigation">
       <ul>
         <li
-          className={activeItem === "name" ? "active" : " "}
+          className={isActiveItem("name") ? "active" : " "}
           onClick={() => {
             setActiveItem("name");
             onSearchByNameClick();
           }}
           role="button"
           tabIndex="0"
-          aria-pressed={activeItem === "name"}
+          aria-pressed={isActiveItem("name")}
           aria-label="Search by name"
         >
           Search by name
         </li>
         <li
-          className={activeItem === "ingredient" ? "active" : " "}
+          className={isActiveItem("ingredient") ? "active" : " "}
           onClick={() => {
             setActiveItem("ingredient");
             onSearchByIngredientClick();
           }}
           role="button"
           tabIndex="0"
-          aria-pressed={activeItem === "ingredient"}
+          aria-pressed={isActiveItem("ingredient")}
           aria-label="Search by ingredient"
         >
           Search by ingredient
         </li>
         <li
-          className={activeItem === "firstLetter" ? "active" : " "}
+          className={isActiveItem("firstLetter") ? "active" : " "}
           onClick={() => {
             setActiveItem("firstLetter");
             onSearchByFirstLetter();
           }}
           role="button"
           tabIndex="0"
-          aria-pressed={activeItem === "firstLetter"}
+          isActiveItem
+          aria-pressed={isActiveItem("firstLetter")}
           aria-label="Search by first letter"
         >
           Search by first letter
         </li>
         <li
-          className={activeItem === "random" ? "active" : " "}
+          className={isActiveItem("random") ? "active" : " "}
           onClick={() => {
             setActiveItem("random");
             onRandomDrink();
           }}
           role="button"
           tabIndex="0"
-          aria-pressed={activeItem === "random"}
+          aria-pressed={isActiveItem("random")}
           aria-label="Get a random drink"
         >
           Get a random drink

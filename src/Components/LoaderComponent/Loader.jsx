@@ -1,13 +1,20 @@
 import React from "react";
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./Loader.css";
 
 const Loader = () => {
   return (
     <div className="loader-container">
-      <p> Still, sparkling, or shaken? We are on it
+      <p>
+        Still, sparkling, or shaken? We are on it
         <span className="dots">
-          <span>.</span><span>.</span><span>.</span>
+          {/* An alternative way */}
+          {Array(3)
+            .fill(".")
+            .map((dot, index) => (
+              // It's not recommended to use index as key, but in this case, it's fine
+              <span key={index}>{dot}</span>
+            ))}
         </span>
       </p>
 
