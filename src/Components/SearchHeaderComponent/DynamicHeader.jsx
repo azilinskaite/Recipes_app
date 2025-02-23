@@ -174,13 +174,16 @@ const DynamicHeader = ({ type }) => {
     setInputValue("");
   };
 
+  // for readability
+  const isFavorites = type === "favorites";
+
   return (
     <>
       <section className="search-header">
         <h1>
           {type === "favorites" ? "Favourite recipes" : "Cocktail recipes"}
         </h1>
-        {type !== "favorites" && (
+        {!isFavorites && (
           <>
             <SearchNavigation
               onSearchByNameClick={handleSearchByNameClick}
@@ -201,7 +204,7 @@ const DynamicHeader = ({ type }) => {
           </>
         )}
       </section>
-      {type !== "favorites" && (
+      {!isFavorites && (
         <section className="cocktail-list-container">
           {loading ? (
             <Loader />

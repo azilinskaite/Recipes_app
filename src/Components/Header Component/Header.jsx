@@ -5,13 +5,15 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <>
-      <div className="logo">
-        <NavLink to="/">
-          <img src={logo} alt="Cocktail Kungen" />
-        </NavLink>
-      </div>
-      <nav>
+    // move the <header> tag from App.jsx to here
+    <header className="header">
+      {/* Include the logo in <nav> and add className to replicate the styling */}
+      <nav className="navbar">
+        <div className="logo">
+          <NavLink to="/">
+            <img src={logo} alt="Cocktail Kungen" />
+          </NavLink>
+        </div>
         <ul>
           <li>
             <NavLink to="/" end>
@@ -22,11 +24,13 @@ const Header = () => {
             <NavLink to="/favorites">My Favourites</NavLink>
           </li>
           <li>
-          <Link to="/signout" className="nav-link">Sign Out</Link>
+            <Link to="/signout" className="nav-link">
+              Sign Out
+            </Link>
           </li>
         </ul>
       </nav>
-    </>
+    </header>
   );
 };
 

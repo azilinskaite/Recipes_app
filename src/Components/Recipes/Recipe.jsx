@@ -43,12 +43,10 @@ export const CocktailDetails = () => {
     }
   }
   const toggleFavourite = (drink) => {
-    const isFavourite = favourites.some((fav) => fav.idDrink === drink.idDrink);
-    if (isFavourite) {
-      removeFromFavourites(drink.idDrink);
-    } else {
-      addToFavourites(drink);
-    }
+    // can be simplified to
+    favourites.some((fav) => fav.idDrink === drink.idDrink)
+      ? removeFromFavourites(drink.idDrink)
+      : addToFavourites(drink);
   };
   return (
     //<div className="recipe_container">
