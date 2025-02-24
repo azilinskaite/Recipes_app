@@ -7,8 +7,6 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
-// folder shouldnt have space in it
-
 const Footer = () => {
   return (
     <footer className="footer">

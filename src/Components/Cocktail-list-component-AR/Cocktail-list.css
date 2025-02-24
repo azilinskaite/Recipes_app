@@ -3,8 +3,8 @@
 .cocktail-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    gap: 4rem;
-    padding: 3.5rem 11rem 6rem 11rem;
+    gap: 2rem;
+    padding: 3rem 10rem 6rem 10rem;
     background-color: var(--background-color);
     justify-content: center;
   }
@@ -60,6 +60,7 @@
   @media (max-width: 768px) {
     .cocktail-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
     padding: 1.5rem;
   }
   }

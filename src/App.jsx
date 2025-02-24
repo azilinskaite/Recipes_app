@@ -36,7 +36,6 @@ function App() {
     <FavouritesProvider>
       <Router>
         <div className="App">
-          {/* delete the <header> tag and move into the component */}
           <Header />
           <main className="content">
             <Routes>

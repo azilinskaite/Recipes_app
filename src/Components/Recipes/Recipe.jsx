@@ -43,13 +43,11 @@ export const CocktailDetails = () => {
     }
   }
   const toggleFavourite = (drink) => {
-    // can be simplified to
     favourites.some((fav) => fav.idDrink === drink.idDrink)
       ? removeFromFavourites(drink.idDrink)
       : addToFavourites(drink);
   };
   return (
-    //<div className="recipe_container">
     <div className="infoDiv">
       <img
         src={cocktail.strDrinkThumb}
@@ -98,6 +96,5 @@ export const CocktailDetails = () => {
         </Link>
       </div>
     </div>
-    //</div>
   );
 };

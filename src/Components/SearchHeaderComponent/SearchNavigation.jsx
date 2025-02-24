@@ -4,12 +4,10 @@ import "./DynamicHeader.css";
 const SearchNavigation = ({
   onSearchByNameClick,
   onSearchByIngredientClick,
-  onSearchByFirstLetter,
   onRandomDrink,
   activeItem,
   setActiveItem,
 }) => {
-  // Function to check if the item is active could use a switch for better readability
   const isActiveItem = (item) => {
     switch (item) {
       case "name":
@@ -18,8 +16,6 @@ const SearchNavigation = ({
         return activeItem === "ingredient";
       case "random":
         return activeItem === "random";
-      case "firstLetter":
-        return activeItem === "firstLetter";
       default:
         return false;
     }
@@ -53,20 +49,6 @@ const SearchNavigation = ({
           aria-label="Search by ingredient"
         >
           Search by ingredient
-        </li>
-        <li
-          className={isActiveItem("firstLetter") ? "active" : " "}
-          onClick={() => {
-            setActiveItem("firstLetter");
-            onSearchByFirstLetter();
-          }}
-          role="button"
-          tabIndex="0"
-          isActiveItem
-          aria-pressed={isActiveItem("firstLetter")}
-          aria-label="Search by first letter"
-        >
-          Search by first letter
         </li>
         <li
           className={isActiveItem("random") ? "active" : " "}

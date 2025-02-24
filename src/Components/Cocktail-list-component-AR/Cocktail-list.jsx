@@ -9,7 +9,6 @@ const CocktailsList = ({ items = [] }) => {
   const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
   const toggleFavourite = (drink) => {
-    // refactor to use ternary operator for readability
     favourites.some((fav) => fav.idDrink === drink.idDrink)
       ? removeFromFavourites(drink.idDrink)
       : addToFavourites(drink);
@@ -19,7 +18,6 @@ const CocktailsList = ({ items = [] }) => {
     <section>
       <div className="cocktail-grid">
         {items.map((drink) => (
-          // Refactor to use a separate component for each cocktail card for readability and reusability
           <CocktailCard
             key={drink.idDrink}
             drink={drink}
@@ -34,7 +32,6 @@ const CocktailsList = ({ items = [] }) => {
   );
 };
 
-// Extract the CocktailCard component to a separate component for reusability and readability
 const CocktailCard = ({ drink, isFavourite, toggleFavourite }) => (
   <div className="productCartContainer">
     <Link to={`/cocktail/${drink.idDrink}`}>

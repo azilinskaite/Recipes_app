@@ -8,11 +8,9 @@ const Loader = () => {
       <p>
         Still, sparkling, or shaken? We are on it
         <span className="dots">
-          {/* An alternative way */}
           {Array(3)
             .fill(".")
             .map((dot, index) => (
-              // It's not recommended to use index as key, but in this case, it's fine
               <span key={index}>{dot}</span>
             ))}
         </span>

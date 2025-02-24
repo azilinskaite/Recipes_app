@@ -5,9 +5,7 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    // move the <header> tag from App.jsx to here
     <header className="header">
-      {/* Include the logo in <nav> and add className to replicate the styling */}
       <nav className="navbar">
         <div className="logo">
           <NavLink to="/">

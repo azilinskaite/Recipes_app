@@ -5,11 +5,7 @@ import { useFavourites } from "../FavouritesContext/FavouritesContext";
 
 const FavouritesList = () => {
   const { favourites } = useFavourites();
-
   return (
-    // fix to correct layout
-
-    // first div is not needed
     <div className="cocktail-grid">
       {favourites.map((item) => (
         <FavouriteItemComponent key={item.id} item={item} />

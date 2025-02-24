@@ -7,7 +7,6 @@ const CocktailsList = () => {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a")
       .then((response) => response.json())
       .then((data) => {
-        // remember to remove console.log from production code
         setCocktail(data.drinks);
       })
       .catch((error) => console.error("Error fetching data:", error));
